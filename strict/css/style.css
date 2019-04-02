@@ -1,0 +1,104 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Tahoma, sans-serif;
+}
+
+.form {
+  background-image: url(../img/bg_road.jpg);
+  background-size: cover;
+
+}
+.form_overlay {
+    background-size: cover;
+    height: 700px;
+    background-color: #2d3950;
+    opacity: 0.9;
+}
+
+.form h1 {
+  color: #ffffff;
+  font-family: Lato;
+  font-size: 41px;
+  text-align: center;
+  /* Text style for "Stay with" */
+  letter-spacing: 1.02px;
+  padding-top: 74px;
+}
+.form p {
+  text-align: center;
+  /* Style for "We ensure" */
+  color: #999999;
+  font-family: Lato;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 23px;
+  /* Text style for "We ensure" */
+  letter-spacing: 0.38px;
+  margin-bottom: 50px;
+}
+
+form {
+  display: block;
+  width: 555px;
+  margin: 0 auto;
+}
+form input {
+  display: block;
+  margin: 0 auto;
+  /* Style for "Rounded Re" */
+  width: 100%;
+  height: 60px;
+  border: 1px solid #ffffff;
+  background-color: #f6f9f9;
+  margin-bottom: 22px;
+  padding-left: 2%;
+  background: transparent;
+}
+form input:last-child {
+  height: 160px;
+}
+form input:hover {
+  border: 1px solid #15a4fa;
+  color: white;
+}
+
+form button {
+  display: block;
+  margin-left: 412px;
+  width: 140px;
+  height: 45px;
+  border: 1px solid #15a4fa;
+  background-color: #15a4fa;
+  /* Style for "Send" */
+  color: #ffffff;
+  font-family: Lato;
+  font-size: 18px;
+  /* Text style for "Send" */
+  letter-spacing: 0.45px;
+  cursor: pointer;
+}
+footer {
+  width: 100%;
+  height: 90px;
+  background-color: #f6f9f9;
+}
+footer p {
+  color: #999999;
+  font-family: Lato;
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0.38px;
+  padding: 38px 255px;
+}
+.link_fb {
+  width: 9px;
+  height: 15px;
+  color: #ffffff;
+  font-family: "Font Awesome";
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0.38px;
+}
