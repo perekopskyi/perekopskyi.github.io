@@ -4,4 +4,4 @@
 Мой первый опубликованный сайт
 
 [Strict](https://perekopskyi.github.io/strict/ "Верстка с нуля") <br>
-[YouTubeOnJS](https://perekopskyi.github.io/youtubejs/ "Практика использования YouTube API")
+[YouTubeOnJS](https://perekopskyi.github.io/YouTubeOnJS/ "Практика использования YouTube API")
