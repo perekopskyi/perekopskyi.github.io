@@ -71,14 +71,15 @@ switcher.addEventListener('change', () => {
 
 const data = [
   ['img/thumb_3.webp', 'img/thumb_4.webp', 'img/thumb_5.webp'],
-  ['#3 Верстка на flexbox CSS | Блок преимущества и галерея | Марафон верстки | Артем Исламов',
-    '#2 Установка spikmi и работа с ветками на Github | Марафон вёрстки  Урок 2',
-    '#1 Верстка реального заказа landing Page | Марафон вёрстки | Артём Исламов'
+  ['#3 Верстка на flexbox CSS | Блок преимущества и галерея | Марафон верстки | Артем Исламов             ',
+    '#2 Установка spikmi и работа с ветками на Github | Марафон вёрстки  Урок 2                           ',
+    '#1 Верстка реального заказа landing Page | Марафон вёрстки | Артём Исламов                           '
   ],
   ['3,6 тыс. просмотров', '4,2 тыс. просмотров', '28 тыс. просмотров'],
   ['X9SmcY3lM-U', '7BvHoh0BrMw', 'mC8JW_aG2EM']
 ];
 
+//Добавление новых карточек
 more.addEventListener('click', () => {
   const videosWrapper = document.querySelector('.videos__wrapper');
   more.remove();
@@ -102,8 +103,21 @@ more.addEventListener('click', () => {
     }, 10);
     bindNewModal(card);
   }
-
+  // Обрезать название видео
   sliceTitle('.videos__item-descr', 95);
+
+  // Проверка на включенный ночной режим
+  if (night == true) {
+    document.querySelectorAll('.videos__item-descr').forEach(item => {
+      item.style.color = '#fff';
+    });
+
+    document.querySelectorAll('.videos__item-views').forEach(item => {
+      item.style.color = '#fff';
+    });
+  } else {
+    return;
+  }
 });
 
 function sliceTitle(selector, count) {
@@ -150,18 +164,19 @@ function bindNewModal(cards) {
   });
 }
 
+// Выход из плеера по нажатии мишью
 modal.addEventListener('click', (e) => {
   if (!e.target.classList.contains('modal__body')) {
     closeModal();
   }
 });
 
-// Попытка реализовать выход по нажатии клавиши ЕСК
-// modal.addEventListener('keypress', function (e) { 
-//   if (e.which === 27) {
-//     closeModal();
-//   }
-// });
+// Выход из плеера по нажатии клавиши Esc
+document.addEventListener('keydown', (e) => {
+  if (e.keyCode === 27) {
+    closeModal();
+  }
+});
 
 function createVideo() {   // 2. This code loads the IFrame Player API code asynchronously.
   var tag = document.createElement('script');
