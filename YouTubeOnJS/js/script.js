@@ -4,6 +4,9 @@ const switcher = document.getElementById('cbx'),
       videos = document.querySelectorAll('.videos__item');
 let player;
 
+// API ключ 
+// key=AIzaSyAD0SBjR_l1WF1_5sxPJva7rV3suw1GkVo
+
 function bindSlideToggle(trigger, boxBody, content, openClass) {
   let button = {
     'element': document.querySelector(trigger),
@@ -69,56 +72,109 @@ switcher.addEventListener('change', () => {
   switchMode();
 });
 
-const data = [
-  ['img/thumb_3.webp', 'img/thumb_4.webp', 'img/thumb_5.webp'],
-  ['#3 Верстка на flexbox CSS | Блок преимущества и галерея | Марафон верстки | Артем Исламов             ',
-    '#2 Установка spikmi и работа с ветками на Github | Марафон вёрстки  Урок 2                           ',
-    '#1 Верстка реального заказа landing Page | Марафон вёрстки | Артём Исламов                           '
-  ],
-  ['3,6 тыс. просмотров', '4,2 тыс. просмотров', '28 тыс. просмотров'],
-  ['X9SmcY3lM-U', '7BvHoh0BrMw', 'mC8JW_aG2EM']
-];
+// const data = [
+//   ['img/thumb_3.webp', 'img/thumb_4.webp', 'img/thumb_5.webp'],
+//   ['#3 Верстка на flexbox CSS | Блок преимущества и галерея | Марафон верстки | Артем Исламов             ',
+//     '#2 Установка spikmi и работа с ветками на Github | Марафон вёрстки  Урок 2                           ',
+//     '#1 Верстка реального заказа landing Page | Марафон вёрстки | Артём Исламов                           '
+//   ],
+//   ['3,6 тыс. просмотров', '4,2 тыс. просмотров', '28 тыс. просмотров'],
+//   ['X9SmcY3lM-U', '7BvHoh0BrMw', 'mC8JW_aG2EM']
+// ];
 
 //Добавление новых карточек
+// more.addEventListener('click', () => {
+//   const videosWrapper = document.querySelector('.videos__wrapper');
+//   more.remove();
+
+//   for (let i = 0; i < data[0].length; i++) {
+//     let card = document.createElement('a');
+
+//     card.classList.add('videos__item', 'videos__item-active');
+//     card.setAttribute('data-url', data[3][i]);
+//     card.innerHTML = `
+//       <img src="${data[0][i]}" alt = "thumb">
+//         <div class="videos__item-descr">
+//           ${data[1][i]}
+//         </div>
+//         <div class="videos__item-views">
+//           ${data[2][i]}
+//         </div>
+//     `;
+//     videosWrapper.appendChild(card);
+//     setTimeout(() => {
+//       card.classList.remove('videos__item-active');
+//     }, 10);
+
+//     // Проверка на включенный ночной режим
+//     if (night == true) {
+//       card.querySelector('.videos__item-descr').style.color = '#fff';
+//       card.querySelector('.videos__item-views').style.color = '#fff';
+//     }
+
+//     bindNewModal(card);
+//   }
+//   // Обрезать название видео
+//   sliceTitle('.videos__item-descr', 95);
+// });
+
+function start() {
+  gapi.client.init({
+    'apiKey': 'AIzaSyAD0SBjR_l1WF1_5sxPJva7rV3suw1GkVo',
+    'discoveryDocs': ["https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest"],
+  }).then(function () {
+    return gapi.client.youtube.playlistItems.list({
+      "part": "snippet,contentDetails",
+      "maxResults": "6",
+      "playlistId": "PL3LQJkGQtzc4gsrFkm4MjWhTXhopsMgpv"
+    });
+  }).then(function (response) {
+    console.log(response.result);
+    const videosWrapper = document.querySelector('.videos__wrapper');
+
+    response.result.items.forEach(item => {
+      let card = document.createElement('a');
+
+      card.classList.add('videos__item', 'videos__item-active');
+      card.setAttribute('data-url', item.contentDetails.videoId);
+      card.innerHTML = `
+        <img src="${item.snippet.thumbnails.high.url}" alt = "thumb">
+          <div class="videos__item-descr">
+            ${item.snippet.title}
+          </div>
+          <div class="videos__item-views">
+            2.7 тыс просмотров
+          </div>
+      `;
+      videosWrapper.appendChild(card);
+      setTimeout(() => {
+        card.classList.remove('videos__item-active');
+      }, 10);
+
+      // Проверка на включенный ночной режим
+      if (night == true) {
+        card.querySelector('.videos__item-descr').style.color = '#fff';
+        card.querySelector('.videos__item-views').style.color = '#fff';
+      }
+    });
+
+    sliceTitle('.videos__item-descr', 95);
+    bindModal(document.querySelectorAll('.videos__item'));
+
+
+  }).catch( e => {
+    console.log(e);
+  });
+}
+
 more.addEventListener('click', () => {
-  const videosWrapper = document.querySelector('.videos__wrapper');
   more.remove();
-
-  for (let i = 0; i < data[0].length; i++) {
-    let card = document.createElement('a');
-    card.classList.add('videos__item', 'videos__item-active');
-    card.setAttribute('data-url', data[3][i]);
-    card.innerHTML = `
-      <img src="${data[0][i]}" alt = "thumb">
-        <div class="videos__item-descr">
-          ${data[1][i]}
-        </div>
-        <div class="videos__item-views">
-          ${data[2][i]}
-        </div>
-    `;
-    videosWrapper.appendChild(card);
-    setTimeout(() => {
-      card.classList.remove('videos__item-active');
-    }, 10);
-    bindNewModal(card);
-  }
-  // Обрезать название видео
-  sliceTitle('.videos__item-descr', 95);
-
-  // Проверка на включенный ночной режим
-  if (night == true) {
-    document.querySelectorAll('.videos__item-descr').forEach(item => {
-      item.style.color = '#fff';
-    });
-
-    document.querySelectorAll('.videos__item-views').forEach(item => {
-      item.style.color = '#fff';
-    });
-  } else {
-    return;
-  }
+  gapi.load('client', start);
 });
+
+
+
+
 
 function sliceTitle(selector, count) {
   document.querySelectorAll(selector).forEach(item => {
