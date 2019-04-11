@@ -2,6 +2,7 @@ const switcher = document.getElementById('cbx'),
       more = document.querySelector('.more'),
       modal = document.querySelector('.modal'),
       videos = document.querySelectorAll('.videos__item');
+const videosWrapper = document.querySelector('.videos__wrapper');
 let player;
 
 // API ключ 
@@ -130,7 +131,6 @@ function start() {
     });
   }).then(function (response) {
     console.log(response.result);
-    const videosWrapper = document.querySelector('.videos__wrapper');
 
     response.result.items.forEach(item => {
       let card = document.createElement('a');
@@ -172,8 +172,60 @@ more.addEventListener('click', () => {
   gapi.load('client', start);
 });
 
+function search(target) {
+  gapi.client.init({
+    'apiKey': 'AIzaSyAD0SBjR_l1WF1_5sxPJva7rV3suw1GkVo',
+    'discoveryDocs': ["https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest"],
+  }).then(function () {
+    return gapi.client.youtube.search.list({
+      'maxResults': 9,
+      'part': 'snippet',
+      'q': `${target}`,
+      'type': ''
+    });
+  }).then(function(response) {
+    console.log(response.result);
+    // videosWrapper.innerHTML = '';  //лучше перебрать циклом 
+    while (videosWrapper.firstChild) {
+      videosWrapper.removeChild(videosWrapper.firstChild);
+    }
 
+    response.result.items.forEach(item => {
+      let card = document.createElement('a');
 
+      card.classList.add('videos__item', 'videos__item-active');
+      card.setAttribute('data-url', item.id.videoId);
+      card.innerHTML = `
+        <img src="${item.snippet.thumbnails.high.url}" alt = "thumb">
+          <div class="videos__item-descr">
+            ${item.snippet.title}
+          </div>
+          <div class="videos__item-views">
+            2.7 тыс просмотров
+          </div>
+      `;
+      videosWrapper.appendChild(card);
+      setTimeout(() => {
+        card.classList.remove('videos__item-active');
+      }, 10);
+
+      // Проверка на включенный ночной режим
+      if (night == true) {
+        card.querySelector('.videos__item-descr').style.color = '#fff';
+        card.querySelector('.videos__item-views').style.color = '#fff';
+      }
+    });
+    sliceTitle('.videos__item-descr', 95);
+    bindModal(document.querySelectorAll('.videos__item'));
+
+  });
+}
+
+document.querySelector('.search').addEventListener('submit', (e) => {
+  e.preventDefault();
+  gapi.load('client', () => { search(document.querySelector('.search > input').value) });
+  document.querySelector('.search > input').value = '';
+});
 
 
 function sliceTitle(selector, count) {
