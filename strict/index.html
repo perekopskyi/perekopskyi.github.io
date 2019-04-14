@@ -5,39 +5,156 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>STRICT</title>
+
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <section>
-    <div class="conteiner">
-      
+  <header class="sticky-top">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-xs-3">
+          <svg class="logo" width="35" height="37" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="1" y="1" width="15" height="15" fill="#15a4fa"/>
+            <rect x="19" y="3" width="15" height="15" fill="#2d3950" />
+            <rect x="1" y="19" width="15" height="15" fill="#2d3950" />
+            <rect x="19" y="21" width="15" height="15" fill="#15a4fa" />
+          </svg>
+          <a href="#" class="header_company_name">
+            Strict
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+  <section class="main">
+    <div class="container">
+      <div class="row">
+        <div class="main_company_name col-md-12 text-center">
+          Strict
+        </div>
+      </div>
+      <div class="row">
+        <div class="main_company_slogan col-md-12 text-center">
+          STRICT is a responsive website with a clean and minimal look
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="btn">
+          <a href="#advantage">Call to action</a>
+        </div>
+      </div>
     </div>
   </section>
-  
+
+  <section class="advantage" id="advantage">
+    <div class="container-fluid advantage_main">
+      <div class="row justify-content-center">
+          <h1 class="advantage_slogan">
+            Simple & pure design
+          </h1>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+          <p class="advantage_descr">Designers everywhere gush with admiration upon seeing a web design and exclaim "its
+            beautiful, it's so clean!". There are a countless number of webdesign round-ups dedicated to 'clean' design
+            and it is a term thrown around quite a bit in the web design community. It can be easy to spot a good
+            example of clean design</p>
+        </div>
+      </div>
+    </div>
+    <div class="container advantage_icons">
+      <div class="row">
+        <div class="col-md-4 col-xs-12 text-center">
+          <i class="fas fa-mobile-alt"></i>
+          <h3>Optimized for all devices</h3>
+          <p>STRICT has been designed to be fully
+            responsive on all devices</p>
+        </div>
+        <div class="col-md-4 col-xs-12 text-center">
+          <i class="fab fa-telegram-plane"></i>
+          <h3>Clean & Minimal Design</h3>
+          <p>This multipurpose theme is especially created
+            to be used for different projects.</p>
+        </div>
+        <div class="col-md-4 col-xs-12 text-center">
+          <i class="fab fa-font-awesome-flag"></i>
+          <h3>Font Awesome Icon</h3>
+          <p>This multipurpose theme is especially created
+            to be used for different projects.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="portfolio">
+    <div class="container">
+      <div class="row justify-content-center">
+        <h1 class="portfolio_slogan">Showcase your work like a pro.</h1>
+      </div>
+      <div class="row justify-content-center">
+        <p class="portfolio_descr">Showcase your work like a pro.</p>
+      </div>
+      <div class="row pt-5">
+        <div class="col md-4">
+          <img class="img-fluid" src="/img/galery_img_1.jpg" alt="">
+        </div>
+        <div class="col md-4">
+          <img class="img-fluid" src="/img/galery_img_2.jpg" alt="">
+        </div>
+        <div class="col md-4">
+          <img class="img-fluid" src="/img/galery_img_3.jpg" alt="">
+        </div>
+      </div>
+      <div class="row pt-5">
+        <div class="col md-4">
+          <img class="img-fluid" src="/img/galery_img_4.jpg" alt="">
+        </div>
+        <div class="col md-4">
+          <img class="img-fluid" src="/img/galery_img_5.jpg" alt="">
+        </div>
+        <div class="col md-4">
+          <img class="img-fluid" src="/img/galery_img_6.jpg" alt="">
+        </div>
+      </div>
+    </div>
+  </section>
 
 
   <section class="form">
-
     <div class="form_overlay">
-      <h1>Stay with us</h1>
-      <p>We ensure quailty & support</p>
-      <form action="#">
-        <input type="text" placeholder="Full Name">
-        <input type="text" placeholder="Email Address">
-        <input type="text-area" placeholder="Message">
-        <button>Send</button>
-      </form>
+      <div class="container">
+        <h1>Stay with us</h1>
+        <p>We ensure quailty & support</p>
+        <form action="#">
+          <input type="text" name="name" placeholder="Full Name">
+          <input type="text" name="email" placeholder="Email Address">
+          <input type="text-area" name="massage" placeholder="Message">
+          <!-- <label for="subscribe">Subscribe Newsletter
+            <input id="subscribe" class="form-control" type="checkbox">
+          </label> -->
+          <button type="submit">Send</button>
+        </form>
+      </div>
     </div>
   </section>
   <footer>
-    <p>Copyritht 2019, STRICT</p>
-    <div class="social_links">
-      <div class="link_fb"></div>
-      <div class="link"></div>
-      <div class="link"></div>
-      <div class="link"></div>
+    <div class="container">
+      <div class="row justify-content-between">
+        <div class="col-xs-3 align-self-center">
+          <p>Copyritht 2019, STRICT</p>
+        </div>
+        <div class="col-xs-3 align-self-center social_links">
+          <a href="#"><i class="social_link fab fa-facebook-f"></i></a>
+          <a href="#"><i class="social_link fab fa-twitter"></i></a>
+          <a href="#"><i class="social_link fab fa-instagram"></i></a>
+          <a href="#"><i class="social_link fab fa-linkedin"></i></a>
+        </div>
+      </div>
     </div>
   </footer>
   
