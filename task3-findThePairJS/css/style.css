@@ -1,0 +1,76 @@
+body {
+  background: rgba(129, 110, 138, 0.521);
+  font-family: 'Tinos', serif;
+  font-size: 1.5em;
+  text-align: center;
+  color: #000000;
+}
+
+h1 {
+  font-weight: 200;
+  font-size: 2.2em;
+}
+
+div {
+  width: 330px;
+  margin: auto;
+}
+
+[data-view="card"] {
+  transform: rotateY(180deg);
+  width: 80px;
+  height: 80px;
+  margin: 1px;
+  float: left;
+  cursor: pointer;
+  background-color: #ffffff;
+  border-radius: 5px;
+}
+
+.reverse {
+  transition: 0.2s;
+  transform-style: preserve-3d;
+  position: relative;
+  transform: rotateY(180deg);
+}
+
+/* Cards */
+.correct[data-item="1"],
+.flipped[data-item="1"] {
+  background-color: red;
+}
+
+.correct[data-item="2"],
+.flipped[data-item="2"] {
+  background-color: orange;
+}
+
+.correct[data-item="3"],
+.flipped[data-item="3"] {
+  background-color: yellow;
+}
+
+.correct[data-item="4"],
+.flipped[data-item="4"] {
+  background-color: green
+}
+
+.correct[data-item="5"],
+.flipped[data-item="5"] {
+  background-color: skyblue;
+}
+
+.correct[data-item="6"],
+.flipped[data-item="6"] {
+  background-color: blue;
+}
+
+.correct[data-item="7"],
+.flipped[data-item="7"] {
+  background-color: blueviolet;
+}
+
+.correct[data-item="8"],
+.flipped[data-item="8"] {
+  background-color: gray;
+}
