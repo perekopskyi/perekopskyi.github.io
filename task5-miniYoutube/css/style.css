@@ -1,0 +1,66 @@
+body {
+  margin: 0;
+  transition: .5s all
+}
+.logo {
+  margin: 30px 0;
+}
+.logo img {
+  width: 130px;
+  margin: 30px;
+}
+.videos {
+  margin: 10px;
+}
+.videos iframe {
+  width: 500px;
+  height: 280px;
+  margin: auto;
+  padding: 5px;
+}
+.btn {
+  color: rgb(255, 255, 255);
+  background-color: rgb(240, 76, 98);
+  border: 5px;
+  border-radius: 10px;
+  width: 150px;
+  height: 40px;
+  font-size: 1.1rem;
+  margin-left: 10px;
+}
+.btn a {
+  color: rgb(255, 255, 255);
+}
+.btn a:hover {
+  text-decoration: none;
+}
+.btn:hover {
+  background-color: rgb(247, 180, 81);
+}
+
+.welcome-text {
+  width: 60%;
+  text-align: center;
+  margin: auto;
+}
+
+.form {
+  width: 500px;
+  margin: auto;
+  border: 2px solid rgb(104, 104, 104);
+  padding: 20px;
+}
+input {
+  width: 200px;
+  height: 30px;
+  margin-bottom: 20px;
+  margin-top: 0;
+}
+.reg-btn {
+  color: rgb(255, 255, 255);
+  background-color: rgb(240, 76, 98);
+  border: 5px;
+  border-radius: 10px;
+  height: 40px;
+  font-size: 1.1rem;
+}
