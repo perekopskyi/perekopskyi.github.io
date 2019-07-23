@@ -1,5 +1,5 @@
-![Фото](https://i.ibb.co/s1TFWw6/381-min-2000px.jpg)
-<br><br>
+
+
 # Евгений Перекопский (Telegram, Instagram - @i_am_yevhen)<br>
 Примеры моих работ
 
@@ -11,3 +11,6 @@ JavaScript<br>
 [YouTubeOnJS - практика использования API YouTube](https://perekopskyi.github.io/YouTubeOnJS/ "Практика использования YouTube API")<br>
 [Игра "Найди пару" на JS](https://perekopskyi.github.io/task3-findThePairJS/ "Начать игру")<br>
 [Возможные варианты ходов конем из заданной клетки](https://perekopskyi.github.io/task4-moveHorseOnBoard/ "Возможные варианты ходов конем из заданной клетки на шахматной доске")<br>
+
+<br><br>
+![Фото](https://i.ibb.co/s1TFWw6/381-min-2000px.jpg)
