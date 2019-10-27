@@ -12,5 +12,9 @@ JavaScript<br>
 [Игра "Найди пару" на JS](https://perekopskyi.github.io/task3-findThePairJS/ "Начать игру")<br>
 [Возможные варианты ходов конем из заданной клетки](https://perekopskyi.github.io/task4-moveHorseOnBoard/ "Возможные варианты ходов конем из заданной клетки на шахматной доске")<br>
 
+<br>
+React<br>
+[Генератор тестов](https://react-quiz-d9fe7.web.app/)
+
 <br><br>
 ![Фото](https://i.ibb.co/s1TFWw6/381-min-2000px.jpg)
