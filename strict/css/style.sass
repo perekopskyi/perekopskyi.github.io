@@ -23,6 +23,8 @@ header
     height: 100%
     .row
       height: 100%
+      .logo
+        margin-left: 10px
 .header_company_name
   display: inline-block
   vertical-align: middle
@@ -41,26 +43,16 @@ header
   background-size: cover
   height: 800px
   &_company_name
-    display: inline-block
-    top: 217px
-    left: 50%
-    transform: translate(-50%, -50%)
     color: $light
     font-family: Lato
     font-size: 12rem
     font-weight: 700
     text-transform: uppercase
     letter-spacing: 3px
-    &::before
-      display: block
-      content: ''
-      position: relative
-      top: 100%
-      left: 50%
-      transform: translate(-50%, -50%)
-      width: 600px
-      height: 2px
-      background-color: $main-color
+    width: 600px
+    margin: 0 auto
+    padding-top: 140px
+    border-bottom: 2px solid $main-color
   &_company_slogan
     color: $light
     font-size: 20px
@@ -205,31 +197,41 @@ form
 footer 
   height: 90px
   background-color: $bg-color
-  p 
-    color: $grey
-    font-size: 15px
-    letter-spacing: 0.38px
-    padding: 30px 10px
-    margin: 0
-  .social_link
-    width: 40px
-    height: 40px
-    color: $light
-    font-size: 20px
-    padding: 11px
-    cursor: pointer
-  .fa-facebook-f
-    background-color: #3b5998
-    padding: 11px 15px
-  .fa-twitter
-    background-color: #55acee
-  .fa-instagram
-    background-color: #dd4b39
-  .fa-linkedin
-    background-color: #0976b4
+  .footer
+    margin: 0 10px
+    p 
+      color: $grey
+      font-size: 15px
+      letter-spacing: 0.38px
+      padding: 30px 10px
+      margin: 0
+    .social_link
+      width: 40px
+      height: 40px
+      color: $light
+      font-size: 20px
+      padding: 11px
+      cursor: pointer
+    .fa-facebook-f
+      background-color: #3b5998
+      padding: 11px 15px
+    .fa-twitter
+      background-color: #55acee
+    .fa-instagram
+      background-color: #dd4b39
+    .fa-linkedin
+      background-color: #0976b4
     
 @media (max-width: 610px)
   .advantage_icons
     i 
       margin-bottom: 10px
+
+/* phone */
+@media screen and (min-width: 375px) and (max-width: 609px)
+  .main
+    &_company_name
+      font-size: 7rem
+      width: 90vw
+
     

@@ -26,6 +26,10 @@ header .container .row {
   height: 100%;
 }
 
+header .container .row .logo {
+  margin-left: 10px;
+}
+
 .header_company_name {
   display: inline-block;
   vertical-align: middle;
@@ -49,30 +53,16 @@ header .container .row {
 }
 
 .main_company_name {
-  display: inline-block;
-  top: 217px;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
   color: #ffffff;
   font-family: Lato;
   font-size: 12rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 3px;
-}
-
-.main_company_name::before {
-  display: block;
-  content: '';
-  position: relative;
-  top: 100%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
   width: 600px;
-  height: 2px;
-  background-color: #15a4fa;
+  margin: 0 auto;
+  padding-top: 140px;
+  border-bottom: 2px solid #15a4fa;
 }
 
 .main_company_slogan {
@@ -257,7 +247,11 @@ footer {
   background-color: #f6f9f9;
 }
 
-footer p {
+footer .footer {
+  margin: 0 10px;
+}
+
+footer .footer p {
   color: #999999;
   font-size: 15px;
   letter-spacing: 0.38px;
@@ -265,7 +259,7 @@ footer p {
   margin: 0;
 }
 
-footer .social_link {
+footer .footer .social_link {
   width: 40px;
   height: 40px;
   color: #ffffff;
@@ -274,26 +268,34 @@ footer .social_link {
   cursor: pointer;
 }
 
-footer .fa-facebook-f {
+footer .footer .fa-facebook-f {
   background-color: #3b5998;
   padding: 11px 15px;
 }
 
-footer .fa-twitter {
+footer .footer .fa-twitter {
   background-color: #55acee;
 }
 
-footer .fa-instagram {
+footer .footer .fa-instagram {
   background-color: #dd4b39;
 }
 
-footer .fa-linkedin {
+footer .footer .fa-linkedin {
   background-color: #0976b4;
 }
 
 @media (max-width: 610px) {
   .advantage_icons i {
     margin-bottom: 10px;
+  }
+}
+
+/* phone */
+@media screen and (min-width: 375px) and (max-width: 609px) {
+  .main_company_name {
+    font-size: 7rem;
+    width: 90vw;
   }
 }
 /*# sourceMappingURL=style.css.map */
