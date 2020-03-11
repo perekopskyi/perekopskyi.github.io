@@ -14,6 +14,3 @@
 
 ## React
 [Генератор тестов](https://react-quiz-d9fe7.web.app/)
-
-<br><br>
-![Фото](https://i.ibb.co/25z9mkH/IMG-1647.jpg)
