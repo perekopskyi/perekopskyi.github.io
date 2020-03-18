@@ -13,4 +13,5 @@
 [Возможные варианты ходов конем из заданной клетки](https://perekopskyi.github.io/task4-moveHorseOnBoard/ "Возможные варианты ходов конем из заданной клетки на шахматной доске")<br>
 
 ## React
-[Генератор тестов](https://react-quiz-d9fe7.web.app/)
+[Генератор тестов](https://react-quiz-d9fe7.web.app/)<br>
+[Киноафиша](https://perekopskyi.github.io/ReactWarriors-Films/)
