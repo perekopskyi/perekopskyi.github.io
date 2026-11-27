@@ -15,7 +15,7 @@ Legend: ⬜ todo · 🟡 in progress / PR open · ✅ done · ⏸ blocked on own
 ## P0 — before applying
 
 | # | Item | Why | Status |
-|---|------|-----|--------|
+| --- | ------ | ----- | -------- |
 | 1 | **Fill in Experience** (`src/data/experience.ts`) — company or anonymised domain, title, dates, 2–3 measurable outcomes per role | "8+ years" without a single employer is the biggest red flag on the page | 🟡 #8 — from the CV |
 | 2 | **Separate shipped work from concepts** — Bracket Builder and Garden panel under "Selected work"; Performance Monitor and E2E Generator under a smaller "Exploring" block | Concepts next to production work read as padding | 🟡 #4 |
 | 3 | **Make projects verifiable** — live URL, repository, stack, a real screenshot for Bracket Builder and Garden panel | "10,000+ users" with no link proves nothing | ⏸ needs data (Garden stack is in; no URLs anywhere yet) |
@@ -27,7 +27,7 @@ Legend: ⬜ todo · 🟡 in progress / PR open · ✅ done · ⏸ blocked on own
 ## P1 — what separates Senior from Middle
 
 | # | Item | Why | Status |
-|---|------|-----|--------|
+| --- | ------ | ----- | -------- |
 | 8 | **Case study page** for Bracket Builder (and later Garden panel): problem and constraints, architecture diagram, key decisions and trade-offs, what went wrong, numbers | This is what I ask about in an interview. Have the answer on the page | ⏸ needs data |
 | 9 | **Back every skill with evidence** — tie skills to projects or roles; drop non-skills ("Scalable applications") and tool names (Cursor, Devin) | NestJS, GraphQL, AWS Lambda, microservices are claimed but nothing on the page shows them | 🟡 #8 — skills match the CV; unbacked claims removed. NestJS, GraphQL, AWS still lack a project that shows them |
 | 10 | **Engineering quality of the site itself** — Playwright smoke and accessibility tests, Lighthouse budget in CI, "Source of this site" link | Cheap, strong signal; Playwright is already listed as a skill | 🟡 #6 |
@@ -37,7 +37,7 @@ Legend: ⬜ todo · 🟡 in progress / PR open · ✅ done · ⏸ blocked on own
 ## P2 — features that help hiring
 
 | # | Feature | Value | Effort | Status |
-|---|---------|-------|--------|--------|
+| --- | --------- | ------- | -------- | -------- |
 | 13 | CV PDF generated from `src/data` at build time | One source of truth for site and CV; a good engineering story | S | 🟡 #7 |
 | 14 | Live Bracket Builder metrics (public `/stats` endpoint) | Turns "10k users" into a verified fact and shows the backend | S–M | ⏸ needs API |
 | 15 | "Ask about my experience" AI chat over the CV (serverless + LLM) | Shows full-stack and AI in one feature. Must be production-grade: rate limits, prompt-injection guard, answers only from provided facts, cost cap | M–L | ⬜ |
@@ -48,6 +48,34 @@ Legend: ⬜ todo · 🟡 in progress / PR open · ✅ done · ⏸ blocked on own
 ## Do not add
 
 Skill progress bars, typing animations, 3D, fabricated testimonials, a command palette for its own sake. At senior level these read as noise.
+
+## Standing decisions
+
+Carried over from the original implementation plan (2026-11-04), which is now retired. These still apply; change them deliberately, not by drift.
+
+### Scope
+
+- One page with in-page anchors, no client-side router. Revisit only for case-study URLs (#8); the prerender step from #5 is the base for that.
+- English only. No analytics, no third-party scripts, no contact form, no backend for the page itself.
+- The old HTML/CSS exercises (`/strict/`, `/YouTubeOnJS/`, …) were removed on purpose; they live in git history.
+
+### Content honesty
+
+- Concepts and experiments say so in a visible text label ("Concept", "Experiment") and describe what they *explore*, never what they *delivered*.
+- Commercial or NDA work stays `published: false` until it can be described without breaking confidentiality.
+
+### Design
+
+- Editorial, not a SaaS template: warm paper ground, serif display (Fraunces, about weight 520) for the hero and section titles only, Public Sans for reading. One deep green accent for availability, links, and focus. Tokens live in `src/index.css`.
+- Left-aligned, 1120px content width, hero not centered. Projects are full-width alternating rows with a large muted index instead of badges; skills are one quiet line per group, no pills; Contact is the single dark band.
+- Motion: opacity plus a 12px rise, about 500 ms, ease-out, once. Sticky header with a hairline. No glow, gradient mesh, glassmorphism, or looping animation.
+- Status is never conveyed by colour alone. Muted text keeps at least 4.5:1 contrast on paper.
+
+### Performance
+
+- Fonts are self-hosted, latin subset, `font-display: swap`, only the weights in use.
+- When a bitmap screenshot replaces an SVG cover (#3): store it in `public/projects/`, set explicit `width` and `height`, `decoding="async"`, and `loading="lazy"` on every card except the first. Keep the Lighthouse budget green.
+- Framer Motion is the only animation dependency. Revisit if the bundle grows.
 
 ## Data needed from the owner
 
@@ -63,7 +91,7 @@ Skill progress bars, typing animations, 3D, fabricated testimonials, a command p
 One branch and one pull request per item. Feature PRs are **stacked**: merge them in order (#4 → #5 → #6 → #7 → #8). GitHub retargets the next PR to `master` when its base branch is merged and deleted.
 
 | PR | Branch | Base | Covers | Result |
-|----|--------|------|--------|--------|
+| ---- | -------- | ------ | -------- | -------- |
 | [#3](https://github.com/perekopskyi/perekopskyi.github.io/pull/3) | `docs/roadmap` | `master` | this file | — |
 | [#4](https://github.com/perekopskyi/perekopskyi.github.io/pull/4) | `feat/content-positioning` | `master` | #2, #4, #6, #7 | Full name, Senior Full-stack role, concrete hero, Exploring block, meta tags generated from `site.ts`, new OG image, source link |
 | [#5](https://github.com/perekopskyi/perekopskyi.github.io/pull/5) | `feat/prerender` | #4 | #11 | 20 kB of prerendered HTML; the page reads with JS disabled; hydration-safe `Reveal` |
@@ -78,22 +106,25 @@ One branch and one pull request per item. Feature PRs are **stacked**: merge the
 **What did not move, and why.** The items that matter most for hiring (#1 experience, #3 verifiable projects, #8 case study, #9 skill evidence) are all blocked on facts only the owner has. The site still reads as "strong frontend, unverified track record". The next step is data, not code.
 
 **Corrections to the original review.**
+
 - "Garden panel lists features under *Outcomes*" was wrong. The card already labels MVP points as *Includes*. The real issue is that the panel has no link or screenshot.
 - #12 was already done: Pages builds from Actions and the last deploy was green.
 
 **New findings.**
+
 - CI only exists from #6 onward, so #4 and #5 show no checks. They are covered once the stack merges.
 - `sitemap.xml` has a hand-written `lastmod` (2026-11-04). Generate it at build time, or drop `lastmod`. → added as #19.
 - With employment history filled in, the CV runs to two pages. Keep each role to 2–3 outcome bullets so it stays at two pages.
 
 **Updated priorities.**
+
 1. **Owner data** (#1, #3, #4 spelling, #9). This unblocks the CV link (#7) and the case study (#8). The biggest single improvement left.
 2. **Case study for Bracket Builder** (#8). Needs #3 and an architecture outline. The prerender from #5 is the foundation for a second URL.
 3. **One flagship feature:** the AI chat (#15) *or* live metrics (#14), not both. Metrics are cheaper and prove a claim. The chat is a stronger AI-engineering story but needs a backend, an LLM provider key, and a cost cap. Owner decision.
 4. #17, #18, #19: small polish, any time.
 
 | # | Item | Status |
-|---|------|--------|
+| --- | --- | --- |
 | 19 | Generate `sitemap.xml` `lastmod` at build time (or drop it) | ⬜ |
 
 ## Review after the CV import (2026-11-27)
@@ -101,6 +132,7 @@ One branch and one pull request per item. Feature PRs are **stacked**: merge the
 **What changed.** The biggest red flag is gone. The page now shows three roles with measurable outcomes (10,000+ users, millions of users, −20% load time, 20+ shipped products, mentoring and hiring). It also shows education and languages, and offers a two-page CV for download. The site, the CV PDF, and the owner's CV now say the same thing.
 
 **Still open, in order of hiring impact.**
+
 1. **#3 Verifiable projects.** Bracket Builder is now attributed to LOW6, so a public URL may not be possible. Ask what can be shown: a public tournament page, a screenshot, or a short screen recording.
 2. **#8 Case study.** Bracket Builder at LOW6 is the strongest story. Write it at the architecture level (no proprietary details) and check NDA limits first.
 3. **#9 Skill evidence.** NestJS, GraphQL, and AWS are listed but not shown in any role or project. Add one bullet each where they were used, or drop them.

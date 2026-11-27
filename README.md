@@ -2,8 +2,6 @@
 
 Static personal site for [perekopskyi.github.io](https://perekopskyi.github.io/). Vite, React, TypeScript, and Tailwind. No backend.
 
-The public URL stays on this repository. Do not deploy the new source while GitHub Pages is still publishing the `master` branch directly. See [Deployment](#deployment).
-
 ## Requirements
 
 - Node.js 22 or newer
@@ -15,7 +13,8 @@ The public URL stays on this repository. Do not deploy the new source while GitH
 pnpm install
 pnpm dev
 pnpm typecheck
-pnpm lint
+pnpm lint            # oxlint + markdownlint
+pnpm lint:md         # markdownlint only (.markdownlint-cli2.jsonc)
 pnpm build
 pnpm preview
 pnpm test:e2e        # Playwright + axe against the production build
@@ -43,31 +42,12 @@ A project is shown only when `published` is true and the summary is filled in. A
 
 ## Deployment
 
-Production is GitHub Actions uploading `dist/` with the official Pages actions. The workflow is `.github/workflows/deploy.yml`. It runs on a push to `master`.
+Production is GitHub Actions uploading `dist/` with the official Pages actions. The workflow is `.github/workflows/deploy.yml`. It runs on a push to `main`.
 
-Today the repository still uses the legacy Pages source (`master` / `/`). Pushing this app before switching the source would publish the raw project instead of `dist/`.
-
-Cutover, in order:
-
-1. Confirm `pnpm build` and `pnpm preview` locally.
-2. Switch Pages to GitHub Actions while the current site is still what `master` serves:
-
-   ```bash
-   gh api --method PUT repos/perekopskyi/perekopskyi.github.io/pages -f build_type=workflow
-   ```
-
-3. Commit and push to `master`.
-4. Wait for the Deploy GitHub Pages workflow. Confirm [https://perekopskyi.github.io/](https://perekopskyi.github.io/) serves the new page.
+Merging to `main` publishes the site. The deploy job runs only after the CI job (typecheck, lint, build, Playwright, Lighthouse) passes.
 
 `vite.config.ts` sets `base` to `/` because this is a user site at the domain root.
 
-## Still needs confirmation
+## Roadmap
 
-These stay hidden until you fill them in. Nothing here was invented.
-
-- Availability line, if you want one
-- Tournament Bracket Builder live URL, repository URL, and a real screenshot if you want one
-- Technology lists for each project
-- Public repositories for React Performance Monitor and AI E2E Test Generator, if they exist
-- Commercial work you are allowed to describe
-- Employment history: company, title, dates, responsibilities, outcomes
+Priorities, open items, the data still needed from the owner, and standing design and scope decisions are in [`ROADMAP.md`](ROADMAP.md).
