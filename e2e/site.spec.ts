@@ -1,5 +1,6 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test, type Page } from "@playwright/test";
+import { cvLinked, cvPath } from "../src/data/cv.ts";
 
 /** Finishes scroll-reveal animations so assertions see the final state. */
 async function showAllContent(page: Page) {
@@ -102,4 +103,23 @@ test("has no serious accessibility violations", async ({ page }) => {
     (violation) => violation.impact === "serious" || violation.impact === "critical",
   );
   expect(serious.map((violation) => `${violation.id}: ${violation.help}`)).toEqual([]);
+});
+
+test("serves the CV as a PDF and links to it only once experience is published", async ({
+  page,
+  request,
+}) => {
+  const response = await request.get(cvPath);
+  expect(response.status()).toBe(200);
+  expect(response.headers()["content-type"]).toContain("application/pdf");
+  expect((await response.body()).subarray(0, 5).toString()).toBe("%PDF-");
+
+  await page.goto("/");
+  const heroLink = page.getByRole("link", { name: "Download CV (PDF)" });
+  if (cvLinked()) {
+    await expect(heroLink).toHaveAttribute("href", cvPath);
+    await expect(heroLink).toHaveAttribute("download", "");
+  } else {
+    await expect(heroLink).toHaveCount(0);
+  }
 });

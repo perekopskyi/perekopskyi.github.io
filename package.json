@@ -27,6 +27,7 @@
     "@axe-core/playwright": "^4.14.1",
     "@lhci/cli": "^0.16.1",
     "@playwright/test": "^1.65.1",
+    "@react-pdf/renderer": "^4.9.1",
     "@tailwindcss/vite": "^4.3.4",
     "@types/node": "^24.19.2",
     "@types/react": "^19.3.0",

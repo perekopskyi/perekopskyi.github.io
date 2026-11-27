@@ -1,3 +1,4 @@
+import { cvLinked, cvPath } from "../../data/cv.ts";
 import { site } from "../../data/site.ts";
 import { PageContainer } from "../layout/PageContainer.tsx";
 import { Button } from "../ui/Button.tsx";
@@ -28,20 +29,22 @@ export function Hero() {
         </h1>
         <Reveal delay={0.08}>
           <p className="mt-8 max-w-2xl font-serif text-[clamp(1.5rem,2.4vw,2rem)] leading-snug font-[520] tracking-[-0.02em] text-balance text-ink">
-            {site.role}. React and TypeScript on the front, Node.js and PostgreSQL behind it.
+            {site.role}. {site.headline}
           </p>
         </Reveal>
         <Reveal delay={0.16}>
           <p className="mt-6 max-w-xl text-pretty leading-relaxed text-muted">
-            Most recently I built a tournament platform from scratch in about two months. It now
-            serves 10,000+ users, and adding a new sport no longer means a new application. AI
-            coding agents are part of how I deliver; the architecture, the review, and what is safe
-            to ship stay with me.
+            {site.summary}
           </p>
         </Reveal>
         <Reveal delay={0.24}>
           <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3">
             <Button href="#work">View Projects</Button>
+            {cvLinked() ? (
+              <Button href={cvPath} variant="secondary" download>
+                Download CV (PDF)
+              </Button>
+            ) : null}
             <Button href="#contact" variant="secondary">
               Get in Touch
             </Button>

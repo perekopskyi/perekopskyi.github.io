@@ -1,4 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
+import { cvLinked, cvPath } from "../../data/cv.ts";
 import { site } from "../../data/site.ts";
 import { PageContainer } from "../layout/PageContainer.tsx";
 import { Reveal } from "../ui/Reveal.tsx";
@@ -6,6 +7,9 @@ import { Reveal } from "../ui/Reveal.tsx";
 interface ContactLink {
   label: string;
   href: string;
+  /** Text shown instead of the href. */
+  display?: string;
+  download?: boolean;
 }
 
 function contactLinks(): ContactLink[] {
@@ -21,6 +25,9 @@ function contactLinks(): ContactLink[] {
     links.push({ label: "Telegram", href: site.telegram });
   }
   links.push({ label: "GitHub", href: site.github });
+  if (cvLinked()) {
+    links.push({ label: "CV", href: cvPath, display: "Download PDF", download: true });
+  }
 
   return links;
 }
@@ -51,10 +58,11 @@ export function Contact() {
                     href={link.href}
                     className="flex max-w-full flex-col gap-1"
                     {...(external ? { target: "_blank", rel: "noreferrer noopener" } : {})}
+                    {...(link.download ? { download: "" } : {})}
                   >
                     <span className="text-xs tracking-[0.16em] uppercase">{link.label}</span>
                     <span className="flex max-w-full flex-wrap items-center gap-2 font-serif text-2xl leading-tight font-[520] break-words underline decoration-paper/40 underline-offset-4 hover:decoration-paper sm:text-3xl">
-                      {visibleValue(link.href)}
+                      {link.display ?? visibleValue(link.href)}
                       {external ? <ArrowUpRight className="size-5" aria-hidden="true" /> : null}
                       {external ? <span className="sr-only"> (opens in a new tab)</span> : null}
                     </span>
