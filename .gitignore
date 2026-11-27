@@ -31,5 +31,6 @@ playwright-report
 lighthouse-report
 .lighthouseci
 
-# Local Claude Code config (personal hooks, skills, notes)
-.claude/
+# Claude Code: project config is committed; personal settings stay local
+.claude/settings.local.json
+.claude/hooks/pre-edit-notice.js
