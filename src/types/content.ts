@@ -43,6 +43,10 @@ export interface Site {
   role: string;
   title: string;
   description: string;
+  /** One line under the name: what you do and with what. Used by the hero and the CV. */
+  headline: string;
+  /** Short proof paragraph. Used by the hero and the CV summary. */
+  summary: string;
   location: string;
   yearsLabel: string;
   availability: string | null;

@@ -12,6 +12,9 @@ export const site: Site = {
   title: "Yevhenii Perekopskyi — Senior Full-stack Engineer",
   description:
     "Senior Full-stack Engineer. React and TypeScript on the front, Node.js and PostgreSQL behind it. 8+ years shipping web products.",
+  headline: "React and TypeScript on the front, Node.js and PostgreSQL behind it.",
+  summary:
+    "Most recently I built a tournament platform from scratch in about two months. It now serves 10,000+ users, and adding a new sport no longer means a new application. AI coding agents are part of how I deliver; the architecture, the review, and what is safe to ship stay with me.",
   location: "Ukraine",
   yearsLabel: "8+ years",
   availability: "Available",

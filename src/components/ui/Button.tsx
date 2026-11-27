@@ -1,13 +1,15 @@
 import type { ReactNode } from "react";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Download } from "lucide-react";
 
 interface ButtonProps {
   href: string;
   children: ReactNode;
   variant?: "primary" | "secondary";
+  /** Marks a same-origin file link as a download. */
+  download?: boolean;
 }
 
-export function Button({ href, children, variant = "primary" }: ButtonProps) {
+export function Button({ href, children, variant = "primary", download = false }: ButtonProps) {
   const external = href.startsWith("http");
   const styles =
     variant === "primary"
@@ -19,9 +21,12 @@ export function Button({ href, children, variant = "primary" }: ButtonProps) {
       href={href}
       className={`inline-flex min-h-11 items-center gap-2 text-sm ${styles}`}
       {...(external ? { target: "_blank", rel: "noreferrer noopener" } : {})}
+      {...(download ? { download: "" } : {})}
     >
       {children}
-      {external ? (
+      {download ? (
+        <Download className="size-4" aria-hidden="true" />
+      ) : external ? (
         <ArrowUpRight className="size-4" aria-hidden="true" />
       ) : (
         <ArrowRight className="size-4" aria-hidden="true" />
