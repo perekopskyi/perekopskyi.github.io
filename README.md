@@ -18,9 +18,15 @@ pnpm typecheck
 pnpm lint
 pnpm build
 pnpm preview
+pnpm test:e2e        # Playwright + axe against the production build
+pnpm test:lighthouse # Lighthouse budget (performance, a11y, best practices, SEO)
 ```
 
-`pnpm dev` starts the local site. `pnpm build` typechecks, then writes the static site to `dist/`.
+Run `pnpm build` before either test command. Install the browser once with `pnpm exec playwright install chromium`.
+
+`pnpm dev` starts the local site. `pnpm build` typechecks, builds, and prerenders the page into static HTML in `dist/`.
+
+CI (`.github/workflows/ci.yml`) runs typecheck, lint, build, Playwright, and Lighthouse on every pull request. The deploy workflow runs the same job before publishing.
 
 ## Edit the content
 
