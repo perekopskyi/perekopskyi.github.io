@@ -2,7 +2,7 @@ import { site } from "../../data/site.ts";
 import { PageContainer } from "./PageContainer.tsx";
 
 export function Footer() {
-  const year = new Date().getFullYear();
+  const year = __BUILD_YEAR__;
 
   return (
     <footer className="border-t border-line">
