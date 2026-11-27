@@ -36,7 +36,7 @@ function visibleValue(href: string): string {
   return href.replace(/^mailto:/, "").replace(/^https?:\/\//, "").replace(/\/$/, "");
 }
 
-export function Contact() {
+export const Contact = () => {
   return (
     <section id="contact" className="bg-ink text-paper">
       <PageContainer className="py-20 md:py-28">
@@ -75,4 +75,4 @@ export function Contact() {
       </PageContainer>
     </section>
   );
-}
+};

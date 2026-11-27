@@ -1,7 +1,12 @@
 import type { ReactNode } from "react";
 import type { CoverKind } from "../../types/content.ts";
 
-export function Cover({ kind, index }: { kind: CoverKind; index: string }) {
+interface CoverProps {
+  kind: CoverKind;
+  index: string;
+}
+
+export const Cover = ({ kind, index }: CoverProps) => {
   return (
     <div className="relative aspect-[5/4] overflow-hidden border border-line bg-panel" aria-hidden="true">
       <span className="absolute top-4 left-5 font-serif text-4xl font-[520] tracking-tight text-ink/25">
@@ -10,9 +15,13 @@ export function Cover({ kind, index }: { kind: CoverKind; index: string }) {
       <Diagram kind={kind} />
     </div>
   );
+};
+
+interface DiagramProps {
+  kind: CoverKind;
 }
 
-function Diagram({ kind }: { kind: CoverKind }) {
+const Diagram = ({ kind }: DiagramProps) => {
   if (kind === "bracket") {
     return <BracketDiagram />;
   }
@@ -26,17 +35,21 @@ function Diagram({ kind }: { kind: CoverKind }) {
     return <E2eDiagram />;
   }
   return <CommercialDiagram />;
+};
+
+interface FrameProps {
+  children: ReactNode;
 }
 
-function Frame({ children }: { children: ReactNode }) {
+const Frame = ({ children }: FrameProps) => {
   return (
     <svg viewBox="0 0 360 280" className="h-full w-full" fill="none">
       {children}
     </svg>
   );
-}
+};
 
-function BracketDiagram() {
+const BracketDiagram = () => {
   return (
     <Frame>
       <g className="stroke-ink" strokeWidth="1.25">
@@ -54,9 +67,9 @@ function BracketDiagram() {
       <rect x="292" y="114" width="40" height="20" className="fill-accent" />
     </Frame>
   );
-}
+};
 
-function GardenDiagram() {
+const GardenDiagram = () => {
   return (
     <Frame>
       <g className="stroke-ink" strokeWidth="1.25">
@@ -74,9 +87,9 @@ function GardenDiagram() {
       <path d="M118 204H196" className="stroke-ink" strokeWidth="1.25" />
     </Frame>
   );
-}
+};
 
-function MonitorDiagram() {
+const MonitorDiagram = () => {
   return (
     <Frame>
       <path d="M108 40V220H320" className="stroke-ink" strokeWidth="1.25" />
@@ -87,9 +100,9 @@ function MonitorDiagram() {
       <rect x="116" y="168" width="110" height="16" className="fill-ink/70" />
     </Frame>
   );
-}
+};
 
-function E2eDiagram() {
+const E2eDiagram = () => {
   return (
     <Frame>
       <rect x="108" y="46" width="108" height="176" className="stroke-ink" strokeWidth="1.25" />
@@ -101,13 +114,13 @@ function E2eDiagram() {
       <path d="M248 92h64M248 110h72M248 128h40M248 146h68M248 164h48" className="stroke-ink/70" strokeWidth="1.25" />
     </Frame>
   );
-}
+};
 
-function CommercialDiagram() {
+const CommercialDiagram = () => {
   return (
     <Frame>
       <rect x="108" y="70" width="160" height="120" className="stroke-ink" strokeWidth="1.25" />
       <path d="M132 130H244" className="stroke-ink" strokeWidth="1.25" />
     </Frame>
   );
-}
+};

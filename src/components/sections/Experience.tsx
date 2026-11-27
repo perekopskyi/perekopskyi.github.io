@@ -3,7 +3,12 @@ import { PageContainer } from "../layout/PageContainer.tsx";
 import { Reveal } from "../ui/Reveal.tsx";
 import { SectionHeading } from "../ui/SectionHeading.tsx";
 
-function List({ title, items }: { title: string; items: string[] }) {
+interface ListProps {
+  title: string;
+  items: string[];
+}
+
+const List = ({ title, items }: ListProps) => {
   if (items.length === 0) {
     return null;
   }
@@ -22,9 +27,9 @@ function List({ title, items }: { title: string; items: string[] }) {
       </ul>
     </>
   );
-}
+};
 
-export function Experience() {
+export const Experience = () => {
   const roles = publishedRoles();
 
   if (roles.length === 0) {
@@ -87,4 +92,4 @@ export function Experience() {
       </PageContainer>
     </section>
   );
-}
+};

@@ -3,15 +3,13 @@ import type { Project } from "../../types/content.ts";
 import { Cover } from "./Cover.tsx";
 import { Reveal } from "./Reveal.tsx";
 
-export function ProjectCard({
-  project,
-  index,
-  reversed,
-}: {
+interface ProjectCardProps {
   project: Project;
   index: number;
   reversed: boolean;
-}) {
+}
+
+export const ProjectCard = ({ project, index, reversed }: ProjectCardProps) => {
   const indexLabel = String(index).padStart(2, "0");
   const pointsLabel =
     project.status === "live" ? "Outcomes" : project.status === "mvp" ? "Includes" : "Explores";
@@ -75,9 +73,14 @@ export function ProjectCard({
       )}
     </article>
   );
+};
+
+interface TextLinkProps {
+  href: string;
+  children: string;
 }
 
-function TextLink({ href, children }: { href: string; children: string }) {
+const TextLink = ({ href, children }: TextLinkProps) => {
   return (
     <a
       href={href}
@@ -90,4 +93,4 @@ function TextLink({ href, children }: { href: string; children: string }) {
       <span className="sr-only"> (opens in a new tab)</span>
     </a>
   );
-}
+};

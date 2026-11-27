@@ -4,7 +4,7 @@ import { PageContainer } from "../layout/PageContainer.tsx";
 import { Button } from "../ui/Button.tsx";
 import { Reveal } from "../ui/Reveal.tsx";
 
-export function Hero() {
+export const Hero = () => {
   return (
     <section id="top" className="pt-16 pb-20 md:pt-24 md:pb-28">
       <PageContainer>
@@ -53,4 +53,4 @@ export function Hero() {
       </PageContainer>
     </section>
   );
-}
+};

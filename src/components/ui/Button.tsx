@@ -9,7 +9,7 @@ interface ButtonProps {
   download?: boolean;
 }
 
-export function Button({ href, children, variant = "primary", download = false }: ButtonProps) {
+export const Button = ({ href, children, variant = "primary", download = false }: ButtonProps) => {
   const external = href.startsWith("http");
   const styles =
     variant === "primary"
@@ -34,4 +34,4 @@ export function Button({ href, children, variant = "primary", download = false }
       {external ? <span className="sr-only"> (opens in a new tab)</span> : null}
     </a>
   );
-}
+};

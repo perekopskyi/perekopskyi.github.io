@@ -11,7 +11,7 @@ function isVisible(project: Project): boolean {
   return project.published && project.name.trim() !== "" && project.summary.trim() !== "";
 }
 
-export function Projects() {
+export const Projects = () => {
   const visible = projects.filter(isVisible);
   const shipped = visible.filter((project) => shippedStatuses.has(project.status));
   const exploring = visible.filter((project) => !shippedStatuses.has(project.status));
@@ -54,9 +54,13 @@ export function Projects() {
       </PageContainer>
     </section>
   );
+};
+
+interface ExploringItemProps {
+  project: Project;
 }
 
-function ExploringItem({ project }: { project: Project }) {
+const ExploringItem = ({ project }: ExploringItemProps) => {
   return (
     <article>
       <p className="text-xs tracking-[0.16em] text-muted uppercase">
@@ -79,4 +83,4 @@ function ExploringItem({ project }: { project: Project }) {
       ) : null}
     </article>
   );
-}
+};

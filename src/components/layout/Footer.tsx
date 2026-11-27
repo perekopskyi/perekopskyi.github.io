@@ -1,7 +1,7 @@
 import { site } from "../../data/site.ts";
 import { PageContainer } from "./PageContainer.tsx";
 
-export function Footer() {
+export const Footer = () => {
   const year = __BUILD_YEAR__;
 
   return (
@@ -25,4 +25,4 @@ export function Footer() {
       </PageContainer>
     </footer>
   );
-}
+};
