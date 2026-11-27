@@ -18,9 +18,9 @@ export function App() {
       <main id="content">
         <Hero />
         <About />
+        <Experience />
         <Projects />
         <Skills />
-        <Experience />
         <Contact />
       </main>
       <Footer />

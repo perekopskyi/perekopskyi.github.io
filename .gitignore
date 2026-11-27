@@ -30,3 +30,6 @@ test-results
 playwright-report
 lighthouse-report
 .lighthouseci
+
+# Local Claude Code config (personal hooks, skills, notes)
+.claude/

@@ -20,7 +20,7 @@ export function Projects() {
     <section id="work" className="border-t border-line py-20 md:py-28">
       <PageContainer>
         <SectionHeading
-          index="02"
+          index="03"
           title="Selected work"
           lede="Products that real people use. Commercial work stays unpublished until it can be described without breaking confidentiality."
         />

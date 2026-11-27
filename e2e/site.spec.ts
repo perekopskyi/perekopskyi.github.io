@@ -123,3 +123,16 @@ test("serves the CV as a PDF and links to it only once experience is published",
     await expect(heroLink).toHaveCount(0);
   }
 });
+
+test("lists employment history before selected work", async ({ page }) => {
+  await page.goto("/");
+
+  const experience = page.locator("#experience");
+  await expect(experience.getByRole("heading", { name: "LOW6" })).toBeAttached();
+  await expect(experience.getByRole("heading", { name: "ArtMyWeb" })).toBeAttached();
+
+  const order = await page.evaluate(() =>
+    [...document.querySelectorAll("main > section[id]")].map((section) => section.id),
+  );
+  expect(order.indexOf("experience")).toBeLessThan(order.indexOf("work"));
+});

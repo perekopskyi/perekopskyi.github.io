@@ -1,6 +1,7 @@
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
 import { defineConfig, type Plugin } from "vite";
+import { education } from "./src/data/experience.ts";
 import { site } from "./src/data/site.ts";
 
 function escapeHtml(value: string): string {
@@ -26,6 +27,9 @@ function siteMeta(): Plugin {
       jobTitle: site.role,
       ...(site.email ? { email: site.email } : {}),
       url: site.url,
+      address: { "@type": "PostalAddress", addressCountry: "UA" },
+      knowsLanguage: site.languages.map((language) => language.name),
+      alumniOf: education.map((item) => ({ "@type": "CollegeOrUniversity", name: item.institution })),
       sameAs: [site.github, site.linkedin, site.telegram].filter(Boolean),
     },
   };

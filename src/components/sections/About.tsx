@@ -3,9 +3,9 @@ import { Reveal } from "../ui/Reveal.tsx";
 import { SectionHeading } from "../ui/SectionHeading.tsx";
 
 const facts = [
-  { value: "8+", label: "Years of professional engineering" },
-  { value: "Full stack", label: "Frontend, APIs, and product architecture" },
-  { value: "AI-assisted", label: "Coding agents in the delivery workflow" },
+  { value: "8 years", label: "Shipping production web applications" },
+  { value: "Millions", label: "Users of the NFL, NBA, and NHL products I built features for" },
+  { value: "−20%", label: "Load time, through profiling and code splitting" },
 ];
 
 export function About() {
