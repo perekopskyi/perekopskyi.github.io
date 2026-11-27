@@ -8,7 +8,7 @@ const facts = [
   { value: "−20%", label: "Load time, through profiling and code splitting" },
 ];
 
-export function About() {
+export const About = () => {
   return (
     <section id="about" className="border-t border-line py-20 md:py-28">
       <PageContainer>
@@ -46,4 +46,4 @@ export function About() {
       </PageContainer>
     </section>
   );
-}
+};

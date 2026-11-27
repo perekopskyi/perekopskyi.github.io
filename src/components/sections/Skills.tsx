@@ -3,7 +3,7 @@ import { PageContainer } from "../layout/PageContainer.tsx";
 import { Reveal } from "../ui/Reveal.tsx";
 import { SectionHeading } from "../ui/SectionHeading.tsx";
 
-export function Skills() {
+export const Skills = () => {
   return (
     <section id="skills" className="border-t border-line py-20 md:py-28">
       <PageContainer>
@@ -19,4 +19,4 @@ export function Skills() {
       </PageContainer>
     </section>
   );
-}
+};

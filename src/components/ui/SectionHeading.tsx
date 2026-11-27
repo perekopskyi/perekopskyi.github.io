@@ -4,7 +4,7 @@ interface SectionHeadingProps {
   lede?: string;
 }
 
-export function SectionHeading({ index, title, lede }: SectionHeadingProps) {
+export const SectionHeading = ({ index, title, lede }: SectionHeadingProps) => {
   return (
     <div className="mb-12 grid gap-3 md:mb-16 md:grid-cols-12">
       <p className="text-xs tracking-[0.18em] text-muted uppercase md:col-span-2">{index}</p>
@@ -16,4 +16,4 @@ export function SectionHeading({ index, title, lede }: SectionHeadingProps) {
       </div>
     </div>
   );
-}
+};

@@ -3,7 +3,7 @@ import { publishedRoles } from "../../data/experience.ts";
 import { site } from "../../data/site.ts";
 
 
-export function Header() {
+export const Header = () => {
   const [open, setOpen] = useState(false);
   const links = [
     { href: "#about", label: "About" },
@@ -80,4 +80,4 @@ export function Header() {
       </div>
     </header>
   );
-}
+};

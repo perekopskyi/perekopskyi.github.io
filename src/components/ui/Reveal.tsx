@@ -1,6 +1,12 @@
 import { motion } from "framer-motion";
 import type { ReactNode } from "react";
 
+interface RevealProps {
+  children: ReactNode;
+  className?: string;
+  delay?: number;
+}
+
 /**
  * Fades content in when it scrolls into view.
  *
@@ -9,15 +15,7 @@ import type { ReactNode } from "react";
  * drops the vertical movement for people who ask for reduced motion, and a
  * <noscript> style in index.html keeps the content visible without JavaScript.
  */
-export function Reveal({
-  children,
-  className,
-  delay = 0,
-}: {
-  children: ReactNode;
-  className?: string;
-  delay?: number;
-}) {
+export const Reveal = ({ children, className, delay = 0 }: RevealProps) => {
   return (
     <motion.div
       className={className}
@@ -30,4 +28,4 @@ export function Reveal({
       {children}
     </motion.div>
   );
-}
+};
