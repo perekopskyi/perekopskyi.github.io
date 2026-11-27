@@ -50,7 +50,7 @@ Legend: ⬜ todo · 🟡 in progress / PR open · ✅ done · ⏸ blocked on own
 | 16 | 2–3 engineering notes ("Building X in two months with AI agents: what worked") | Gives the interviewer a topic, shows written thinking | M | ⏸ needs writing |
 | 17 | Cal.com booking link in Contact | Removes an email round-trip | XS | ⏸ needs link |
 | 18 | Dark mode, active-section highlight in nav | Nice, minor hiring impact | S | ⬜ |
-| 19 | Generate `sitemap.xml` `lastmod` at build time (or drop it) | The hand-written date (2026-11-04) is already stale | XS | ⬜ |
+| 19 | Generate `sitemap.xml` `lastmod` at build time (or drop it) | The hand-written date (2026-11-04) is already stale | XS | 🟡 generated at build; `lastmod` = last content commit |
 
 ## Do not add
 
