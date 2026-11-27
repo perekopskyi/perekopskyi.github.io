@@ -49,8 +49,8 @@ Legend: ⬜ todo · 🟡 in progress / PR open · ✅ done · ⏸ blocked on own
 | 15 | "Ask about my experience" AI chat over the CV (serverless + LLM) | Shows full-stack and AI in one feature. Must be production-grade: rate limits, prompt-injection guard, answers only from provided facts, cost cap | M–L | ⬜ |
 | 16 | 2–3 engineering notes ("Building X in two months with AI agents: what worked") | Gives the interviewer a topic, shows written thinking | M | ⏸ needs writing |
 | 17 | Cal.com booking link in Contact | Removes an email round-trip | XS | ⏸ needs link |
-| 18 | Dark mode, active-section highlight in nav | Nice, minor hiring impact | S | ⬜ |
-| 19 | Generate `sitemap.xml` `lastmod` at build time (or drop it) | The hand-written date (2026-11-04) is already stale | XS | 🟡 generated at build; `lastmod` = last content commit |
+| 18 | Dark mode, active-section highlight in nav | Nice, minor hiring impact | S | 🟡 dark mode follows the system, with a moon/sun toggle in the header; nav marks the section in view. Also fixes sideways scroll at 360px (long contact links) |
+| 19 | Generate `sitemap.xml` `lastmod` at build time (or drop it) | The hand-written date (2026-11-04) is already stale | XS | ✅ #15, generated at build; `lastmod` = last content commit |
 
 ## Do not add
 
@@ -77,6 +77,8 @@ Carried over from the original implementation plan (2026-11-04), which is now re
 - Left-aligned, 1120px content width, hero not centered. Projects are full-width alternating rows with a large muted index instead of badges; skills are one quiet line per group, no pills; Contact is the single dark band.
 - Motion: opacity plus a 12px rise, about 500 ms, ease-out, once. Sticky header with a hairline. No glow, gradient mesh, glassmorphism, or looping animation.
 - Status is never conveyed by colour alone. Muted text keeps at least 4.5:1 contrast on paper.
+- Dark mode follows `prefers-color-scheme` by default. A moon/sun icon button in the header, sized like the nav text, stores an explicit choice; an inline head script applies it before first paint, so the prerendered page never flashes the wrong theme. Choosing the system theme clears the stored choice. Both themes keep the same roles: warm paper, ink, one green accent. Contact stays the one inverted band.
+- The page never scrolls sideways down to 320px wide; e2e checks 320, 360, and Pixel 7 widths.
 
 ### Performance
 

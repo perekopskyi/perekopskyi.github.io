@@ -1,4 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
+import { Fragment } from "react";
 import { cvLinked, cvPath } from "../../data/cv.ts";
 import { site } from "../../data/site.ts";
 import { PageContainer } from "../layout/PageContainer.tsx";
@@ -32,6 +33,16 @@ function contactLinks(): ContactLink[] {
   return links;
 }
 
+/** Allows a line break after "@" and "/" so long addresses wrap at a natural point. */
+function withBreakPoints(text: string) {
+  return text.split(/(?<=[@/])/).map((part, index) => (
+    <Fragment key={index}>
+      {index > 0 ? <wbr /> : null}
+      {part}
+    </Fragment>
+  ));
+}
+
 function visibleValue(href: string): string {
   return href.replace(/^mailto:/, "").replace(/^https?:\/\//, "").replace(/\/$/, "");
 }
@@ -61,8 +72,8 @@ export const Contact = () => {
                     {...(link.download ? { download: "" } : {})}
                   >
                     <span className="text-xs tracking-[0.16em] uppercase">{link.label}</span>
-                    <span className="flex max-w-full flex-wrap items-center gap-2 font-serif text-2xl leading-tight font-[520] break-words underline decoration-paper/40 underline-offset-4 hover:decoration-paper sm:text-3xl">
-                      {link.display ?? visibleValue(link.href)}
+                    <span className="flex max-w-full min-w-0 flex-wrap items-center gap-2 font-serif text-2xl leading-tight font-[520] wrap-anywhere underline decoration-paper/40 underline-offset-4 hover:decoration-paper sm:text-3xl">
+                      <span className="min-w-0">{withBreakPoints(link.display ?? visibleValue(link.href))}</span>
                       {external ? <ArrowUpRight className="size-5" aria-hidden="true" /> : null}
                       {external ? <span className="sr-only"> (opens in a new tab)</span> : null}
                     </span>
