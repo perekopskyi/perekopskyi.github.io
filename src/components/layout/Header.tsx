@@ -2,17 +2,14 @@ import { useEffect, useState } from "react";
 import { publishedRoles } from "../../data/experience.ts";
 import { site } from "../../data/site.ts";
 
-const baseLinks = [
-  { href: "#about", label: "About" },
-  { href: "#work", label: "Work" },
-  { href: "#skills", label: "Skills" },
-];
 
 export function Header() {
   const [open, setOpen] = useState(false);
   const links = [
-    ...baseLinks,
+    { href: "#about", label: "About" },
     ...(publishedRoles().length > 0 ? [{ href: "#experience", label: "Experience" }] : []),
+    { href: "#work", label: "Work" },
+    { href: "#skills", label: "Skills" },
     { href: "#contact", label: "Contact" },
   ];
 

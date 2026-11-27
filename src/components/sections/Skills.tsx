@@ -7,7 +7,7 @@ export function Skills() {
   return (
     <section id="skills" className="border-t border-line py-20 md:py-28">
       <PageContainer>
-        <SectionHeading index="03" title="Skills" />
+        <SectionHeading index="04" title="Skills" />
         <dl className="grid gap-x-16 gap-y-8 md:grid-cols-2">
           {skillGroups.map((group, index) => (
             <Reveal key={group.id} className="border-t border-line pt-4" delay={(index % 2) * 0.08}>

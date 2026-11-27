@@ -28,11 +28,25 @@ export interface Role {
   published: boolean;
   company: string;
   position: string;
+  location?: string;
   period: string;
   description: string;
   responsibilities: string[];
   achievements: string[];
   technologies: string[];
+}
+
+export interface Education {
+  id: string;
+  institution: string;
+  degree: string;
+  location: string;
+  period: string;
+}
+
+export interface Language {
+  name: string;
+  level: string;
 }
 
 export interface Site {
@@ -49,6 +63,7 @@ export interface Site {
   summary: string;
   location: string;
   yearsLabel: string;
+  languages: Language[];
   availability: string | null;
   email: string | null;
   linkedin: string | null;

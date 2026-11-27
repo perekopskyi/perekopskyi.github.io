@@ -11,12 +11,16 @@ export const site: Site = {
   role: "Senior Full-stack Engineer",
   title: "Yevhenii Perekopskyi — Senior Full-stack Engineer",
   description:
-    "Senior Full-stack Engineer. React and TypeScript on the front, Node.js and PostgreSQL behind it. 8+ years shipping web products.",
-  headline: "React and TypeScript on the front, Node.js and PostgreSQL behind it.",
+    "Senior Full-stack Engineer with 8 years of experience. React and TypeScript on the front, Node.js, Fastify, and PostgreSQL behind it. Features for NFL, NBA, and NHL products used by millions.",
+  headline: "React and TypeScript on the front, Node.js, Fastify, and PostgreSQL behind it.",
   summary:
-    "Most recently I built a tournament platform from scratch in about two months. It now serves 10,000+ users, and adding a new sport no longer means a new application. AI coding agents are part of how I deliver; the architecture, the review, and what is safe to ship stay with me.",
-  location: "Ukraine",
-  yearsLabel: "8+ years",
+    "For the last three years I owned features end-to-end for NFL, NBA, and NHL sports and gaming products used by millions. I architected and launched a Tournament Bracket Builder from scratch in two months that reached 10,000+ users, and cut load times by 20% through profiling and code splitting.",
+  location: "Kamianske (Dnipro), Ukraine",
+  yearsLabel: "8 years",
+  languages: [
+    { name: "Ukrainian", level: "Native" },
+    { name: "English", level: "B2 Upper-Intermediate" },
+  ],
   availability: "Available",
   email: "yevheniiperekopskyi@gmail.com",
   linkedin: "https://www.linkedin.com/in/yevhenii-perekopskyi",

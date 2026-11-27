@@ -1,7 +1,7 @@
 import { Document, Link, Page, StyleSheet, Text, View } from "@react-pdf/renderer";
 import type { ReactNode } from "react";
 import { shippedProjects } from "../data/cv.ts";
-import { publishedRoles } from "../data/experience.ts";
+import { education, publishedRoles } from "../data/experience.ts";
 import { site } from "../data/site.ts";
 import { skillGroups } from "../data/skills.ts";
 
@@ -121,6 +121,7 @@ export function CvDocument() {
                   </Text>
                   <Text style={styles.entryMeta}>{role.period}</Text>
                 </View>
+                {role.location ? <Text style={styles.entryMeta}>{role.location}</Text> : null}
                 {role.description ? <Text>{role.description}</Text> : null}
                 <Bullets items={[...role.achievements, ...role.responsibilities]} />
                 {role.technologies.length > 0 ? (
@@ -161,7 +162,27 @@ export function CvDocument() {
               <Text style={styles.skillItems}>{group.items.join(", ")}</Text>
             </View>
           ))}
+          <View style={styles.skillRow} wrap={false}>
+            <Text style={styles.skillLabel}>Languages</Text>
+            <Text style={styles.skillItems}>
+              {site.languages.map((language) => `${language.name} — ${language.level}`).join(", ")}
+            </Text>
+          </View>
         </Section>
+
+        {education.length > 0 ? (
+          <Section title="Education">
+            {education.map((item) => (
+              <View key={item.id} style={styles.entry} wrap={false}>
+                <View style={styles.entryHeader}>
+                  <Text style={styles.entryTitle}>{item.institution}</Text>
+                  <Text style={styles.entryMeta}>{item.period}</Text>
+                </View>
+                <Text>{item.degree}</Text>
+              </View>
+            ))}
+          </Section>
+        ) : null}
 
       </Page>
     </Document>

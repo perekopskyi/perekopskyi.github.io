@@ -10,11 +10,11 @@ export const projects: Project[] = [
     id: "sport-bracket-builder",
     name: "Tournament Bracket Builder",
     summary:
-      "A tournament management application built from scratch in about two months using AI-assisted development tools. The product is a reusable tournament architecture, so standing up another sport does not mean starting over.",
-    category: "Product",
+      "A tournament management application I architected and launched at LOW6, from scratch to production in two months, with AI-assisted development tools. The product is a reusable tournament architecture, so standing up another sport does not mean starting over.",
+    category: "LOW6",
     technologies: [],
     achievements: [
-      "10,000+ users.",
+      "Reached 10,000+ users.",
       "Built a reusable tournament architecture.",
       "Simplified creation of new sports tournaments.",
       "Improved extensibility and scalability.",
