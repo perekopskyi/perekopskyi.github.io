@@ -1,6 +1,7 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test, type Page } from "@playwright/test";
 import { cvLinked, cvPath } from "../src/data/cv.ts";
+import { site } from "../src/data/site.ts";
 
 /** Finishes scroll-reveal animations so assertions see the final state. */
 async function showAllContent(page: Page) {
@@ -138,4 +139,23 @@ test("lists employment history before selected work", async ({ page }) => {
     [...document.querySelectorAll("main > section[id]")].map((section) => section.id),
   );
   expect(order.indexOf("experience")).toBeLessThan(order.indexOf("work"));
+});
+
+test("serves a generated sitemap with the canonical URL and a content-based lastmod", async ({
+  request,
+}) => {
+  const response = await request.get("/sitemap.xml");
+  expect(response.status()).toBe(200);
+
+  const xml = await response.text();
+  expect(xml).toContain(`<loc>${site.url}</loc>`);
+  expect(xml).not.toContain("<changefreq>");
+  expect(xml).not.toContain("<priority>");
+
+  // lastmod is omitted only without git history; when present it is a real date, not in the future.
+  const lastmod = xml.match(/<lastmod>(.+)<\/lastmod>/)?.[1];
+  if (lastmod) {
+    expect(lastmod).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+    expect(Date.parse(lastmod)).toBeLessThanOrEqual(Date.now());
+  }
 });
