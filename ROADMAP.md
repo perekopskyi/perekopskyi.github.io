@@ -49,6 +49,30 @@ Legend: ⬜ todo · 🟡 in progress / PR open · ✅ done · ⏸ blocked on own
 
 Skill progress bars, typing animations, 3D, fabricated testimonials, a command palette for its own sake. At senior level these read as noise.
 
+## Standing decisions
+
+Carried over from the original implementation plan (2026-11-04), which is now retired. These still apply; change them deliberately, not by drift.
+
+**Scope**
+- One page with in-page anchors, no client-side router. Revisit only for case-study URLs (#8); the prerender step from #5 is the base for that.
+- English only. No analytics, no third-party scripts, no contact form, no backend for the page itself.
+- The old HTML/CSS exercises (`/strict/`, `/YouTubeOnJS/`, …) were removed on purpose; they live in git history.
+
+**Content honesty**
+- Concepts and experiments say so in a visible text label ("Concept", "Experiment") and describe what they *explore*, never what they *delivered*.
+- Commercial or NDA work stays `published: false` until it can be described without breaking confidentiality.
+
+**Design**
+- Editorial, not a SaaS template: warm paper ground, serif display (Fraunces, about weight 520) for the hero and section titles only, Public Sans for reading. One deep green accent for availability, links, and focus. Tokens live in `src/index.css`.
+- Left-aligned, 1120px content width, hero not centered. Projects are full-width alternating rows with a large muted index instead of badges; skills are one quiet line per group, no pills; Contact is the single dark band.
+- Motion: opacity plus a 12px rise, about 500 ms, ease-out, once. Sticky header with a hairline. No glow, gradient mesh, glassmorphism, or looping animation.
+- Status is never conveyed by colour alone. Muted text keeps at least 4.5:1 contrast on paper.
+
+**Performance**
+- Fonts are self-hosted, latin subset, `font-display: swap`, only the weights in use.
+- When a bitmap screenshot replaces an SVG cover (#3): store it in `public/projects/`, set explicit `width` and `height`, `decoding="async"`, and `loading="lazy"` on every card except the first. Keep the Lighthouse budget green.
+- Framer Motion is the only animation dependency. Revisit if the bundle grows.
+
 ## Data needed from the owner
 
 - [x] Employment history — taken from the CV (#8)

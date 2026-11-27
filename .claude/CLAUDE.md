@@ -38,16 +38,16 @@ Static single page: Vite 8, React 19, TypeScript (strict), Tailwind CSS 4, Frame
 ## CI and deploy
 
 - `.github/workflows/ci.yml` runs on every PR: typecheck, lint, build, Playwright, Lighthouse.
-- `.github/workflows/deploy.yml` runs on push to `master`, reuses `ci.yml` as a gate, and deploys `dist/` to GitHub Pages. Merging to `master` publishes the site.
+- `.github/workflows/deploy.yml` runs on push to `main`, reuses `ci.yml` as a gate, and deploys `dist/` to GitHub Pages. Merging to `main` publishes the site.
 
 ## Pull requests
 
-- One feature per branch and PR. Branch from `master`; if PRs must stack, say so in the description and merge in order.
+- One feature per branch and PR. Branch from `main`; if PRs must stack, say so in the description and merge in order.
 - Write PR titles and descriptions in English.
 - Start the title with the type: `feat:` (new behaviour), `fix:` (bug fix), `docs:`, `ci:`, or `chore:` (tooling, dependencies, config, refactoring without behaviour change).
 - Description sections: what changes and why, the roadmap item it covers, and how it was verified.
 - Stage files explicitly (`git add <paths>`), never `git add -A`: personal files (`.claude/settings.local.json`, `.env*`) must not reach the public repo.
-- Commit locally, then stop. Push a branch or open a PR only after the owner confirms; each push needs its own confirmation.
+- Leave changes uncommitted for the owner to review. Commit, push, or open a PR only after the owner confirms; each commit and push needs its own confirmation.
 
 ## Claude Code config
 
