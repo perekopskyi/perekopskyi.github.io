@@ -36,10 +36,15 @@
     <script type="application/ld+json">%SITE_JSON_LD%</script>
   </head>
   <body>
-    <div id="root"></div>
     <noscript>
-      <p>%SITE_TITLE%. This page needs JavaScript to render the portfolio.</p>
+      <style>
+        [data-reveal] {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+      </style>
     </noscript>
+    <div id="root"><!--app-html--></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

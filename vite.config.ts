@@ -56,5 +56,8 @@ function siteMeta(): Plugin {
 // perekopskyi.github.io is a user site, served at the domain root.
 export default defineConfig({
   base: "/",
+  define: {
+    __BUILD_YEAR__: JSON.stringify(new Date().getFullYear()),
+  },
   plugins: [siteMeta(), react(), tailwindcss()],
 });
