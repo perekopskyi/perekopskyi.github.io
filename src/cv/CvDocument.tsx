@@ -1,4 +1,4 @@
-import { Document, Link, Page, StyleSheet, Text, View } from "@react-pdf/renderer";
+import { Document, Page, StyleSheet, Text, View } from "@react-pdf/renderer";
 import type { ReactNode } from "react";
 import { shippedProjects } from "../data/cv.ts";
 import { education, publishedRoles } from "../data/experience.ts";
@@ -9,7 +9,6 @@ import { skillGroups } from "../data/skills.ts";
 const ink = "#1c1915";
 const muted = "#5c564c";
 const line = "#ddd6c8";
-const accent = "#1b4736";
 
 const styles = StyleSheet.create({
   page: {
@@ -25,7 +24,6 @@ const styles = StyleSheet.create({
   role: { marginTop: 4, fontSize: 11, color: muted },
   contacts: { marginTop: 8, flexDirection: "row", flexWrap: "wrap", color: muted },
   contactItem: { marginRight: 12 },
-  link: { color: accent, textDecoration: "none" },
   section: { marginTop: 18 },
   sectionTitle: {
     // No letter spacing: spaced capitals extract as "S U M M A R Y" in ATS parsers.
@@ -78,10 +76,10 @@ export function CvDocument() {
   const roles = publishedRoles();
   const work = shippedProjects();
   const contacts = [
-    site.email ? { label: site.email, href: `mailto:${site.email}` } : null,
-    site.linkedin ? { label: stripScheme(site.linkedin), href: site.linkedin } : null,
-    { label: stripScheme(site.github), href: site.github },
-    { label: stripScheme(site.url), href: site.url },
+    site.email,
+    site.linkedin ? stripScheme(site.linkedin) : null,
+    stripScheme(site.github),
+    stripScheme(site.url),
   ].filter((contact) => contact !== null);
 
   return (
@@ -99,9 +97,9 @@ export function CvDocument() {
         </Text>
         <View style={styles.contacts}>
           {contacts.map((contact) => (
-            <Link key={contact.href} src={contact.href} style={[styles.contactItem, styles.link]}>
-              {contact.label}
-            </Link>
+            <Text key={contact} style={styles.contactItem}>
+              {contact}
+            </Text>
           ))}
         </View>
 
@@ -146,9 +144,7 @@ export function CvDocument() {
                   <Text style={styles.tech}>{project.technologies.join(" · ")}</Text>
                 ) : null}
                 {project.url ? (
-                  <Link src={project.url} style={styles.link}>
-                    {stripScheme(project.url)}
-                  </Link>
+                  <Text>{stripScheme(project.url)}</Text>
                 ) : null}
               </View>
             ))}

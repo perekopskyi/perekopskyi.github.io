@@ -112,7 +112,10 @@ test("serves the CV as a PDF and links to it only once experience is published",
   const response = await request.get(cvPath);
   expect(response.status()).toBe(200);
   expect(response.headers()["content-type"]).toContain("application/pdf");
-  expect((await response.body()).subarray(0, 5).toString()).toBe("%PDF-");
+  const pdf = await response.body();
+  expect(pdf.subarray(0, 5).toString()).toBe("%PDF-");
+  // Contacts and URLs are plain text: no clickable link annotations.
+  expect(pdf.toString("latin1")).not.toMatch(/\/Subtype\s*\/Link|\/URI/);
 
   await page.goto("/");
   const heroLink = page.getByRole("link", { name: "Download CV (PDF)" });
