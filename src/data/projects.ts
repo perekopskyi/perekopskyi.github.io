@@ -8,7 +8,7 @@ import type { Project } from "../types/content.ts";
 export const projects: Project[] = [
   {
     id: "sport-bracket-builder",
-    name: "Tournament Bracket Builder ",
+    name: "Tournament Bracket Builder",
     summary:
       "A tournament management application built from scratch in about two months using AI-assisted development tools. The product is a reusable tournament architecture, so standing up another sport does not mean starting over.",
     category: "Product",
@@ -30,10 +30,23 @@ export const projects: Project[] = [
     summary:
       "An MVP of the management panel for a garden society. Members can register, and the board keeps plots, electricity readings, community projects, and meetings in one place.",
     category: "Product",
-    technologies: ["React", "Tailwind CSS", "Shadcn UI", "TypeScript", "Node.js", "Fastify", "PostgreSQL", "Drizzle ORM", "Redis", "MongoDB", "Vercel", "Railway"],
+    technologies: [
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "shadcn/ui",
+      "Node.js",
+      "Fastify",
+      "PostgreSQL",
+      "Drizzle ORM",
+      "Redis",
+      "MongoDB",
+      "Vercel",
+      "Railway",
+    ],
     achievements: [
       "Member registration.",
-      "Plot records.", 
+      "Plot records.",
       "Electricity readings.",
       "Community projects.",
       "Meetings.",

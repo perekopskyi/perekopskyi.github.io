@@ -36,7 +36,10 @@ export interface Role {
 }
 
 export interface Site {
+  /** Short name used in conversational copy ("Hi, I'm …"). */
   name: string;
+  /** Legal / LinkedIn name. Used in the title, H1, and structured data. */
+  fullName: string;
   role: string;
   title: string;
   description: string;
@@ -47,5 +50,7 @@ export interface Site {
   linkedin: string | null;
   telegram: string | null;
   github: string;
+  /** Repository that holds this site's source. */
+  sourceUrl: string;
   url: string;
 }

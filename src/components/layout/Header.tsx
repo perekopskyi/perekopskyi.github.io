@@ -42,7 +42,7 @@ export function Header() {
       <div className="mx-auto flex h-16 w-full max-w-[1120px] items-center justify-between px-6 md:px-10">
         <div className="flex items-baseline gap-4">
           <a href="#top" className="font-serif text-xl tracking-tight text-ink">
-            {site.name}
+            {site.fullName}
           </a>
           <p className="hidden text-xs tracking-[0.14em] text-muted uppercase lg:block">
             {site.role}

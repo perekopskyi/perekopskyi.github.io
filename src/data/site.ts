@@ -7,10 +7,11 @@ import type { Site } from "../types/content.ts";
  */
 export const site: Site = {
   name: "Eugene",
-  role: "Senior Software Engineer",
-  title: "Eugene — Senior Software Engineer",
+  fullName: "Yevhenii Perekopskyi",
+  role: "Senior Full-stack Engineer",
+  title: "Yevhenii Perekopskyi — Senior Full-stack Engineer",
   description:
-    "Senior Software Engineer building scalable web products and AI-powered applications. 8+ years of experience.",
+    "Senior Full-stack Engineer. React and TypeScript on the front, Node.js and PostgreSQL behind it. 8+ years shipping web products.",
   location: "Ukraine",
   yearsLabel: "8+ years",
   availability: "Available",
@@ -18,5 +19,6 @@ export const site: Site = {
   linkedin: "https://www.linkedin.com/in/yevhenii-perekopskyi",
   telegram: "https://t.me/i_am_yevhen",
   github: "https://github.com/perekopskyi",
+  sourceUrl: "https://github.com/perekopskyi/perekopskyi.github.io",
   url: "https://perekopskyi.github.io/",
 };

@@ -23,7 +23,7 @@ export function About() {
               client.
             </p>
             <p>
-              I also use AI coding tools as part of the job. Tournament Bracket Builder  is the clearest
+              I also use AI coding tools as part of the job. Tournament Bracket Builder is the clearest
               example: a tournament product built from scratch in about two months, with a reusable
               architecture so a new sport does not require a new application. The tools shorten the
               build. The product shape, the review, and what is safe to ship stay with me.

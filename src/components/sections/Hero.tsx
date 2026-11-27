@@ -23,19 +23,20 @@ export function Hero() {
             ) : null}
           </div>
         </Reveal>
-        <h1 className="mt-8 font-serif text-[clamp(3.15rem,8.5vw,7.25rem)] leading-[0.9] font-[520] tracking-[-0.045em] text-ink">
-          Hi, I'm {site.name}.
+        <h1 className="mt-8 font-serif text-[clamp(3rem,8vw,6.75rem)] leading-[0.92] font-[520] tracking-[-0.045em] text-balance text-ink">
+          {site.fullName}
         </h1>
         <Reveal delay={0.08}>
           <p className="mt-8 max-w-2xl font-serif text-[clamp(1.5rem,2.4vw,2rem)] leading-snug font-[520] tracking-[-0.02em] text-balance text-ink">
-            Senior Software Engineer building scalable web products and AI-powered applications.
+            {site.role}. React and TypeScript on the front, Node.js and PostgreSQL behind it.
           </p>
         </Reveal>
         <Reveal delay={0.16}>
           <p className="mt-6 max-w-xl text-pretty leading-relaxed text-muted">
-            With 8+ years of experience, I build reliable, scalable, and user-focused software
-            products. I combine strong engineering fundamentals with modern AI-powered development
-            workflows.
+            Most recently I built a tournament platform from scratch in about two months. It now
+            serves 10,000+ users, and adding a new sport no longer means a new application. AI
+            coding agents are part of how I deliver; the architecture, the review, and what is safe
+            to ship stay with me.
           </p>
         </Reveal>
         <Reveal delay={0.24}>
