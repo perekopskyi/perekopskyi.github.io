@@ -24,18 +24,63 @@
 @theme {
   --font-sans: "Public Sans Variable", "Avenir Next", "Segoe UI", sans-serif;
   --font-serif: "Fraunces Variable", "Iowan Old Style", Palatino, "Palatino Linotype", serif;
-  --color-paper: #f3f0e8;
-  --color-ink: #1c1915;
-  --color-muted: #5c564c;
-  --color-line: #ddd6c8;
-  --color-panel: #e6e0d2;
-  --color-accent: #1b4736;
+  /*
+   * Each colour is light-dark(light, dark); the active one follows color-scheme
+   * below. Same editorial roles in both: warm paper and ink, one green accent.
+   * Every text pair keeps at least 4.5:1 contrast in both themes (6.6:1 at worst).
+   */
+  --color-paper: light-dark(#f3f0e8, #161411);
+  --color-ink: light-dark(#1c1915, #ece6da);
+  --color-muted: light-dark(#5c564c, #aaa292);
+  --color-line: light-dark(#ddd6c8, #353029);
+  --color-panel: light-dark(#e6e0d2, #211e19);
+  --color-accent: light-dark(#1b4736, #8fc5a7);
+}
+
+/*
+ * Theme: the system setting by default. The header toggle stores an explicit
+ * choice as data-theme on <html>; an inline script in index.html applies it
+ * before first paint, so the prerendered page never flashes the wrong theme.
+ * Contact stays the one band that inverts the page in both themes.
+ */
+:root {
+  color-scheme: light dark;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+/* Theme toggle: show a moon in the light theme and a sun in the dark one. */
+.theme-toggle__sun {
+  display: none;
+}
+
+:root[data-theme="dark"] .theme-toggle__sun {
+  display: block;
+}
+
+:root[data-theme="dark"] .theme-toggle__moon {
+  display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-toggle__sun {
+    display: block;
+  }
+
+  :root:not([data-theme="light"]) .theme-toggle__moon {
+    display: none;
+  }
 }
 
 @layer base {
   html {
     background: var(--color-paper);
-    color-scheme: light;
   }
 
   body {

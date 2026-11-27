@@ -3,14 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="color-scheme" content="light" />
+    <meta name="color-scheme" content="light dark" />
     <title>%SITE_TITLE%</title>
     <meta
       name="description"
       content="%SITE_DESCRIPTION%"
     />
     <link rel="canonical" href="https://perekopskyi.github.io/" />
-    <meta name="theme-color" content="#f3f0e8" />
+    <meta name="theme-color" content="#f3f0e8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#161411" media="(prefers-color-scheme: dark)" />
+    <script>
+      // Apply a stored theme choice before first paint (see ThemeToggle.tsx).
+      try {
+        var theme = localStorage.getItem("theme");
+        if (theme === "light" || theme === "dark") {
+          document.documentElement.dataset.theme = theme;
+          var color = theme === "dark" ? "#161411" : "#f3f0e8";
+          document.querySelectorAll('meta[name="theme-color"]').forEach(function (meta) {
+            meta.setAttribute("content", color);
+          });
+        }
+      } catch (error) {}
+    </script>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="en_US" />
@@ -41,6 +55,9 @@
         [data-reveal] {
           opacity: 1 !important;
           transform: none !important;
+        }
+        [data-theme-toggle] {
+          display: none !important;
         }
       </style>
     </noscript>
