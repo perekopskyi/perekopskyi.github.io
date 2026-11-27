@@ -2,9 +2,15 @@
 
 Goal: the site should help land a **Senior Full-stack Developer** role. A hiring manager should be able to verify the CV in five minutes and leave with questions for the interview.
 
-Review date: 2026-11-27. The site is live at [perekopskyi.github.io](https://perekopskyi.github.io/) and deployed by GitHub Actions.
+Last updated: 2026-11-27. The site is live at [perekopskyi.github.io](https://perekopskyi.github.io/) and deploys from `main` through GitHub Actions after CI passes.
 
-## Diagnosis
+## Status at a glance
+
+- **Done:** positioning, experience from the CV, prerendering, CV PDF, tests and Lighthouse in CI, Markdown lint. 10 of 19 items are closed.
+- **Blocked on owner data:** #3 verifiable projects, #8 case study, #9 skill evidence (part), #14 live metrics, #16 notes, #17 booking link.
+- **Open, no data needed:** #15 AI chat (needs an owner decision), #18 dark mode and nav highlight, #19 sitemap `lastmod`.
+
+## Initial diagnosis (before the first pass)
 
 The design and code quality are strong: semantic markup, a skip link, reduced-motion support, content kept in `src/data/*`, Open Graph and JSON-LD, and CI deploy.
 
@@ -16,34 +22,35 @@ Legend: ⬜ todo · 🟡 in progress / PR open · ✅ done · ⏸ blocked on own
 
 | # | Item | Why | Status |
 | --- | ------ | ----- | -------- |
-| 1 | **Fill in Experience** (`src/data/experience.ts`) — company or anonymised domain, title, dates, 2–3 measurable outcomes per role | "8+ years" without a single employer is the biggest red flag on the page | 🟡 #8 — from the CV |
-| 2 | **Separate shipped work from concepts** — Bracket Builder and Garden panel under "Selected work"; Performance Monitor and E2E Generator under a smaller "Exploring" block | Concepts next to production work read as padding | 🟡 #4 |
+| 1 | **Fill in Experience** (`src/data/experience.ts`) — company or anonymised domain, title, dates, 2–3 measurable outcomes per role | "8+ years" without a single employer is the biggest red flag on the page | ✅ #8, from the CV |
+| 2 | **Separate shipped work from concepts** — Bracket Builder and Garden panel under "Selected work"; Performance Monitor and E2E Generator under a smaller "Exploring" block | Concepts next to production work read as padding | ✅ #4 |
 | 3 | **Make projects verifiable** — live URL, repository, stack, a real screenshot for Bracket Builder and Garden panel | "10,000+ users" with no link proves nothing | ⏸ needs data (Garden stack is in; no URLs anywhere yet) |
-| 4 | **Full name** in `<title>`, H1, JSON-LD, OG — match LinkedIn (Yevhenii Perekopskyi) | Recruiters search by full name and cross-check LinkedIn | 🟡 #4 — spelling confirmed by the CV |
-| 5 | **Download CV (PDF)** | Recruiters forward PDFs; no PDF means you get skipped | 🟡 #7, link live with #8 |
-| 6 | **Rewrite the Hero** with concrete positioning instead of generic words ("reliable, scalable, user-focused") | The first screen must say what you do and prove it | 🟡 #4 |
-| 7 | **Copy fixes** — trailing space in "Tournament Bracket Builder", role title aligned to "Senior Full-stack Engineer" | Small, but visible | 🟡 #4 |
+| 4 | **Full name** in `<title>`, H1, JSON-LD, OG — match LinkedIn (Yevhenii Perekopskyi) | Recruiters search by full name and cross-check LinkedIn | ✅ #4, spelling confirmed by the CV |
+| 5 | **Download CV (PDF)** | Recruiters forward PDFs; no PDF means you get skipped | ✅ #7, #8; contacts are plain text since #12 |
+| 6 | **Rewrite the Hero** with concrete positioning instead of generic words ("reliable, scalable, user-focused") | The first screen must say what you do and prove it | ✅ #4 |
+| 7 | **Copy fixes** — trailing space in "Tournament Bracket Builder", role title aligned to "Senior Full-stack Engineer" | Small, but visible | ✅ #4 |
 
 ## P1 — what separates Senior from Middle
 
 | # | Item | Why | Status |
 | --- | ------ | ----- | -------- |
 | 8 | **Case study page** for Bracket Builder (and later Garden panel): problem and constraints, architecture diagram, key decisions and trade-offs, what went wrong, numbers | This is what I ask about in an interview. Have the answer on the page | ⏸ needs data |
-| 9 | **Back every skill with evidence** — tie skills to projects or roles; drop non-skills ("Scalable applications") and tool names (Cursor, Devin) | NestJS, GraphQL, AWS Lambda, microservices are claimed but nothing on the page shows them | 🟡 #8 — skills match the CV; unbacked claims removed. NestJS, GraphQL, AWS still lack a project that shows them |
-| 10 | **Engineering quality of the site itself** — Playwright smoke and accessibility tests, Lighthouse budget in CI, "Source of this site" link | Cheap, strong signal; Playwright is already listed as a skill | 🟡 #6 |
-| 11 | **Prerender HTML at build time** | Content is client-rendered only today; prerendering is required for case-study URLs and helps crawlers | 🟡 #5 |
-| 12 | Confirm the new site is deployed | — | ✅ Pages uses `workflow`, last deploy green |
+| 9 | **Back every skill with evidence** — tie skills to projects or roles; drop non-skills ("Scalable applications") and tool names (Cursor, Devin) | NestJS, GraphQL, AWS Lambda, microservices are claimed but nothing on the page shows them | 🟡 #8: skills match the CV, unbacked claims removed. ⏸ NestJS, GraphQL, AWS still lack a role bullet or project that shows them |
+| 10 | **Engineering quality of the site itself** — Playwright smoke and accessibility tests, Lighthouse budget in CI, "Source of this site" link | Cheap, strong signal; Playwright is already listed as a skill | ✅ #6; Markdown lint added in #13 |
+| 11 | **Prerender HTML at build time** | Content is client-rendered only today; prerendering is required for case-study URLs and helps crawlers | ✅ #5 |
+| 12 | Confirm the new site is deployed | — | ✅ Pages uses `workflow`; deploys from `main` since #13 |
 
 ## P2 — features that help hiring
 
 | # | Feature | Value | Effort | Status |
 | --- | --------- | ------- | -------- | -------- |
-| 13 | CV PDF generated from `src/data` at build time | One source of truth for site and CV; a good engineering story | S | 🟡 #7 |
+| 13 | CV PDF generated from `src/data` at build time | One source of truth for site and CV; a good engineering story | S | ✅ #7 |
 | 14 | Live Bracket Builder metrics (public `/stats` endpoint) | Turns "10k users" into a verified fact and shows the backend | S–M | ⏸ needs API |
 | 15 | "Ask about my experience" AI chat over the CV (serverless + LLM) | Shows full-stack and AI in one feature. Must be production-grade: rate limits, prompt-injection guard, answers only from provided facts, cost cap | M–L | ⬜ |
 | 16 | 2–3 engineering notes ("Building X in two months with AI agents: what worked") | Gives the interviewer a topic, shows written thinking | M | ⏸ needs writing |
 | 17 | Cal.com booking link in Contact | Removes an email round-trip | XS | ⏸ needs link |
 | 18 | Dark mode, active-section highlight in nav | Nice, minor hiring impact | S | ⬜ |
+| 19 | Generate `sitemap.xml` `lastmod` at build time (or drop it) | The hand-written date (2026-11-04) is already stale | XS | ⬜ |
 
 ## Do not add
 
@@ -88,7 +95,7 @@ Carried over from the original implementation plan (2026-11-04), which is now re
 
 ## Execution log
 
-One branch and one pull request per item. Feature PRs are **stacked**: merge them in order (#4 → #5 → #6 → #7 → #8). GitHub retargets the next PR to `master` when its base branch is merged and deleted.
+One branch and one pull request per item. #4–#8 and #10–#11 were stacked and merged in order. The default branch was `master` until #13 renamed it to `main`; the table keeps the names used at the time. All PRs below are merged.
 
 | PR | Branch | Base | Covers | Result |
 | ---- | -------- | ------ | -------- | -------- |
@@ -98,6 +105,11 @@ One branch and one pull request per item. Feature PRs are **stacked**: merge the
 | [#6](https://github.com/perekopskyi/perekopskyi.github.io/pull/6) | `ci/e2e-and-lighthouse` | #5 | #10 | 11 Playwright + axe checks on desktop and mobile; Lighthouse 100/100/100/100; deploy gated on CI; CI green |
 | [#7](https://github.com/perekopskyi/perekopskyi.github.io/pull/7) | `feat/cv-pdf` | #6 | #5, #13 | ATS-friendly PDF from `src/data`; download link gated on published roles |
 | [#8](https://github.com/perekopskyi/perekopskyi.github.io/pull/8) | `feat/experience-from-cv` | #7 | #1, #9 (part) | LOW6, ArtMyWeb, Upwork, education, languages; Experience moved after About; skills match the CV; CV download is live |
+| [#9](https://github.com/perekopskyi/perekopskyi.github.io/pull/9) | `docs/roadmap` | `master` | this file | Roadmap status after the CV import |
+| [#10](https://github.com/perekopskyi/perekopskyi.github.io/pull/10) | `refactor/components-arrow-props` | `master` | code quality | Components follow the component rules; prerendered HTML byte-identical |
+| [#11](https://github.com/perekopskyi/perekopskyi.github.io/pull/11) | `chore/commit-claude-config` | #10 | tooling | Shared `.claude/` project config committed; personal settings stay local |
+| [#12](https://github.com/perekopskyi/perekopskyi.github.io/pull/12) | `fix/cv-plain-text-links` | `master` | #5 | CV contacts and URLs are plain text; e2e fails on link annotations |
+| [#13](https://github.com/perekopskyi/perekopskyi.github.io/pull/13) | `chore/main-branch-and-docs` | `main` | #10, tooling | Default branch `main`; implementation plan retired into Standing decisions; markdownlint in CI |
 
 ## Review after the first pass (2026-11-27)
 
@@ -123,10 +135,6 @@ One branch and one pull request per item. Feature PRs are **stacked**: merge the
 3. **One flagship feature:** the AI chat (#15) *or* live metrics (#14), not both. Metrics are cheaper and prove a claim. The chat is a stronger AI-engineering story but needs a backend, an LLM provider key, and a cost cap. Owner decision.
 4. #17, #18, #19: small polish, any time.
 
-| # | Item | Status |
-| --- | --- | --- |
-| 19 | Generate `sitemap.xml` `lastmod` at build time (or drop it) | ⬜ |
-
 ## Review after the CV import (2026-11-27)
 
 **What changed.** The biggest red flag is gone. The page now shows three roles with measurable outcomes (10,000+ users, millions of users, −20% load time, 20+ shipped products, mentoring and hiring). It also shows education and languages, and offers a two-page CV for download. The site, the CV PDF, and the owner's CV now say the same thing.
@@ -139,3 +147,15 @@ One branch and one pull request per item. Feature PRs are **stacked**: merge the
 4. Flagship feature: #14 or #15, as before.
 
 **Interview prep note.** The CV title at LOW6 is "Full-stack Developer", while the site positions you as "Senior Full-stack Engineer". That is normal and defensible (scope, ownership, mentoring), but expect the question and have a one-sentence answer ready.
+
+## Review after tooling and cleanup (2026-11-27)
+
+**What changed.** No hiring-facing content moved in this round; the work made the repository itself a better exhibit and easier to keep honest.
+
+- Components follow one convention (#10), and the agent rules behind the site are public in `.claude/` (#11). A reviewer can see how AI-assisted work is constrained: no invented facts, checks before merge, one PR per change.
+- The CV no longer carries clickable links (#12), and a test keeps it that way.
+- `main` is the default branch, deploys are gated on CI from `main` only, and stale branches are gone (#13). Markdown is linted in CI, and `IMPLEMENTATION_PLAN.md` is folded into Standing decisions.
+
+**Still open, in order of hiring impact.** Unchanged from the previous review: #3 verifiable projects, #8 case study, #9 skill evidence, then one flagship feature (#14 or #15). All of them need owner input first.
+
+**Next code-only steps,** if there is time before the owner data arrives: #19 (sitemap `lastmod`, minutes), then #18 (active-section highlight; dark mode only if it keeps the editorial palette and passes the Lighthouse budget).
