@@ -30,7 +30,8 @@ Static single page: Vite 8, React 19, TypeScript (strict), Tailwind CSS 4, Frame
 ## Commands
 
 - `pnpm dev` — local dev server (client-rendered, no prerender).
-- `pnpm typecheck` / `pnpm lint` (oxlint) / `pnpm build` (typecheck, build, prerender, CV).
+- `pnpm typecheck` / `pnpm lint` (oxlint + markdownlint) / `pnpm build` (typecheck, build, prerender, CV).
+- `pnpm lint:md` — [markdownlint](https://github.com/DavidAnson/markdownlint) on every Markdown file: default rules, MD013 (line length) off. Config: `.markdownlint-cli2.jsonc`. Every `.md` file must pass it.
 - `pnpm test:e2e` — Playwright (desktop Chrome + Pixel 7) with axe, against the production build. Run `pnpm build` first; install the browser once with `pnpm exec playwright install chromium`.
 - `pnpm test:lighthouse` — Lighthouse CI budget on `dist/` (performance ≥ 0.9; accessibility, best practices, SEO ≥ 0.95).
 - Before calling work done: typecheck, lint, build, and e2e must pass. Add or update an e2e test for any behaviour change.

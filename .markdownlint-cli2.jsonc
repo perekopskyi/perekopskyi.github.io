@@ -1,0 +1,11 @@
+// markdownlint rules for this repo (https://github.com/DavidAnson/markdownlint).
+// Same rule set as the global config: defaults, line length off.
+{
+  "config": {
+    "default": true,
+    // Prose is written one line per paragraph; line length is not enforced.
+    "MD013": false
+  },
+  // Skip node_modules, dist, test reports, and other ignored files.
+  "gitignore": true
+}

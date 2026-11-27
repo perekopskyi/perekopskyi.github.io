@@ -13,7 +13,8 @@ Static personal site for [perekopskyi.github.io](https://perekopskyi.github.io/)
 pnpm install
 pnpm dev
 pnpm typecheck
-pnpm lint
+pnpm lint            # oxlint + markdownlint
+pnpm lint:md         # markdownlint only (.markdownlint-cli2.jsonc)
 pnpm build
 pnpm preview
 pnpm test:e2e        # Playwright + axe against the production build

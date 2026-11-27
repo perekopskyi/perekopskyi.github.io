@@ -10,7 +10,8 @@
     "dev": "vite",
     "typecheck": "tsc -b",
     "build": "tsc -b && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs",
-    "lint": "oxlint",
+    "lint": "oxlint && pnpm lint:md",
+    "lint:md": "markdownlint-cli2 \"**/*.md\"",
     "preview": "vite preview",
     "test:e2e": "playwright test",
     "test:lighthouse": "lhci autorun"
@@ -33,6 +34,7 @@
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^6.1.2",
+    "markdownlint-cli2": "^0.24.2",
     "oxlint": "^1.89.0",
     "tailwindcss": "^4.3.4",
     "typescript": "~7.0.2",
