@@ -6,9 +6,9 @@ Last updated: 2026-11-27. The site is live at [perekopskyi.github.io](https://pe
 
 ## Status at a glance
 
-- **Done:** positioning, experience from the CV, prerendering, CV PDF, tests and Lighthouse in CI, Markdown lint. 10 of 19 items are closed.
+- **Done:** positioning, experience from the CV, prerendering, CV PDF, tests and Lighthouse in CI, Markdown lint, sitemap, dark mode with a toggle, dependency audit in CI. 12 of 20 items are closed.
 - **Blocked on owner data:** #3 verifiable projects, #8 case study, #9 skill evidence (part), #14 live metrics, #16 notes, #17 booking link.
-- **Open, no data needed:** #15 AI chat (needs an owner decision), #18 dark mode and nav highlight, #19 sitemap `lastmod`.
+- **Open, no data needed:** #15 AI chat (needs an owner decision). #20 waits on an upstream release.
 
 ## Initial diagnosis (before the first pass)
 
@@ -49,8 +49,9 @@ Legend: ⬜ todo · 🟡 in progress / PR open · ✅ done · ⏸ blocked on own
 | 15 | "Ask about my experience" AI chat over the CV (serverless + LLM) | Shows full-stack and AI in one feature. Must be production-grade: rate limits, prompt-injection guard, answers only from provided facts, cost cap | M–L | ⬜ |
 | 16 | 2–3 engineering notes ("Building X in two months with AI agents: what worked") | Gives the interviewer a topic, shows written thinking | M | ⏸ needs writing |
 | 17 | Cal.com booking link in Contact | Removes an email round-trip | XS | ⏸ needs link |
-| 18 | Dark mode, active-section highlight in nav | Nice, minor hiring impact | S | 🟡 dark mode follows the system, with a moon/sun toggle in the header; nav marks the section in view. Also fixes sideways scroll at 360px (long contact links) |
+| 18 | Dark mode, active-section highlight in nav | Nice, minor hiring impact | S | ✅ #16, dark mode follows the system, with a moon/sun toggle in the header; nav marks the section in view. Also fixes sideways scroll at 360px (long contact links) |
 | 19 | Generate `sitemap.xml` `lastmod` at build time (or drop it) | The hand-written date (2026-11-04) is already stale | XS | ✅ #15, generated at build; `lastmod` = last content commit |
+| 20 | Remove the `katex` override in `pnpm-workspace.yaml` once `micromark-extension-math` (via markdownlint) allows katex ≥ 0.18.2 | Overrides are debt; the dependency should resolve on its own | XS | ⏸ waiting on upstream |
 
 ## Do not add
 

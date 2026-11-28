@@ -39,7 +39,8 @@ Static single page: Vite 8, React 19, TypeScript (strict), Tailwind CSS 4, Frame
 
 ## CI and deploy
 
-- `.github/workflows/ci.yml` runs on every PR: typecheck, lint, build, Playwright, Lighthouse.
+- `.github/workflows/ci.yml` runs on every PR: dependency audit (`pnpm audit`: production deps fail at moderate, all deps at high), typecheck, lint, build, Playwright, Lighthouse.
+- Security overrides for transitive dependencies live in `pnpm-workspace.yaml` (pnpm 11). Add them with `pnpm audit --fix=override`, not `--fix=update` (it also bumps unrelated packages), and give each one a comment with the advisory and when to remove it.
 - `.github/workflows/deploy.yml` runs on push to `main`, reuses `ci.yml` as a gate, and deploys `dist/` to GitHub Pages. Merging to `main` publishes the site.
 
 ## Pull requests

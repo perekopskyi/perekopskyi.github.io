@@ -25,7 +25,7 @@ Run `pnpm build` before either test command. Install the browser once with `pnpm
 
 `pnpm dev` starts the local site. `pnpm build` typechecks, builds, and prerenders the page into static HTML in `dist/`.
 
-CI (`.github/workflows/ci.yml`) runs typecheck, lint, build, Playwright, and Lighthouse on every pull request. The deploy workflow runs the same job before publishing.
+CI (`.github/workflows/ci.yml`) runs a dependency audit, typecheck, lint, build, Playwright, and Lighthouse on every pull request. The audit fails on moderate or worse in production dependencies and on high or worse anywhere. The deploy workflow runs the same job before publishing.
 
 ## Edit the content
 

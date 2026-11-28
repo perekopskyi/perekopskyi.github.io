@@ -1,0 +1,7 @@
+# Security overrides for transitive dependencies (written by `pnpm audit --fix=override`).
+overrides:
+  # GHSA-238p-pmpm-9mq7 (low). markdownlint-cli2 -> markdownlint -> micromark-extension-math
+  # pins katex ^0.16, and the fix is in 0.18.2. markdownlint only uses the math syntax
+  # parser and never renders KaTeX, so the newer major is safe here.
+  # Remove once micromark-extension-math allows katex >= 0.18.2 (see ROADMAP.md).
+  katex@>=0.11.0 <0.18.2: ^0.18.2
